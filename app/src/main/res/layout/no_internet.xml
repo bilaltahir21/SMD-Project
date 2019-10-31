@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Internet Not Avilable! "
+        android:textColor="#e64a19"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_15sdp"
+        android:textSize="@dimen/_10sdp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check Connection and Try again."
+        android:textColor="#e64a19"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_15sdp"
+        android:textSize="@dimen/_10sdp"/>
+
+
+</LinearLayout>
