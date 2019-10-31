@@ -87,7 +87,7 @@
                 android:padding="@dimen/_10sdp"
                 android:gravity="center"
                 android:textColor="#000FFF"
-                android:text="No Account Yet! Create One."
+                android:text="@string/no_account_yet_create_one"
                 android:textSize="13sp" />
         </LinearLayout>
 

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f5f5f5"
@@ -53,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:padding="@dimen/_12sdp"
-                    android:text="Name"
+                    android:text="@string/name"
                     android:textSize="14sp" />
 
                 <TextView
@@ -63,7 +61,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="#f0f0f4"
-                    android:hint="Mr. Tiffin"
+                    android:hint="@string/mr_tiffin"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -83,8 +81,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:padding="@dimen/_12sdp"
-                    android:text="Phone"
-                    android:textSize="14dp" />
+                    android:text="@string/phone"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txt_number"
@@ -93,7 +91,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="#f0f0f4"
-                    android:hint="+923347638921"
+                    android:hint="@string/_923347638921"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
 <!--                <TextView-->
@@ -125,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:padding="@dimen/_12sdp"
-                    android:text="Address"
+                    android:text="@string/address_generated"
                     android:textSize="14sp" />
 
                 <TextView
@@ -135,7 +133,7 @@
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:id="@+id/txt_address"
-                    android:hint="Punjab, Lahore, Faisal Town, 147A"
+                    android:hint="@string/punjab_lahore_faisal_town_147a"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -149,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:padding="@dimen/_12sdp"
-                    android:text="City"
+                    android:text="@string/city"
                     android:textSize="14sp" />
 
                 <TextView
@@ -159,7 +157,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="#f0f0f4"
-                    android:hint="Lahore"
+                    android:hint="@string/lahore"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -173,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:padding="@dimen/_12sdp"
-                    android:text="Town"
+                    android:text="@string/town"
                     android:textSize="14sp" />
 
                 <TextView
@@ -183,7 +181,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="#f0f0f4"
-                    android:hint="Faisal Town"
+                    android:hint="@string/faisal_town"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -197,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:padding="@dimen/_12sdp"
-                    android:text="Street"
+                    android:text="@string/street"
                     android:textSize="14sp" />
 
                 <TextView
@@ -207,7 +205,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="#f0f0f4"
-                    android:hint="Street X"
+                    android:hint="@string/street_x"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -222,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:padding="@dimen/_12sdp"
-                    android:text="House #"
+                    android:text="@string/house_data"
                     android:textSize="14sp" />
 
                 <TextView
@@ -232,7 +230,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="#f0f0f4"
-                    android:hint="147A"
+                    android:hint="@string/_147a"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -256,7 +254,7 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:textSize="12sp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:text="Log Out"/>
+                    android:text="@string/log_out" />
 
                 <Button
                     android:id="@+id/btn_changeAdd"
@@ -267,7 +265,7 @@
                     android:textSize="12sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:text="Change Address"/>
+                    android:text="@string/btn_change_address" />
             </LinearLayout>
         </LinearLayout>
 
