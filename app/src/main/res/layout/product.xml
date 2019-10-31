@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_20sdp">
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+<!--        android:background="@color/design_default_color_primary"-->
+
+        <ImageView
+            android:id="@+id/image_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/image"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/txt_banner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/cardview_light_background"
+            android:text="Flat 50% off "  />
+
+        <TextView
+            android:id="@+id/txt_banner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="@dimen/_80sdp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/cardview_light_background"
+            android:text="FREE DELIVERY  "
+           />
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2.2"
+        android:background="#d81b60">
+
+        <!--        android:background="@color/colorAccent"-->
+
+        <Button
+            android:id="@+id/btn_addToCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_message"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/btn_background"
+            android:padding="10dp"
+            android:text="Add to Cart"
+            android:textAllCaps="true"
+            android:textSize="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/txt_rated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_toStartOf="@+id/txt_rating"
+            android:padding="@dimen/_5sdp"
+            android:text="Reted"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/txt_SEO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_Title"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:text="Deliciously Cooked like Home"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txt_rsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_SEO"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:text="Rs."
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/txt_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_SEO"
+            android:layout_toEndOf="@+id/txt_rsLabel"
+            android:padding="@dimen/_5sdp"
+            android:text="150"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_SEO"
+            android:layout_toEndOf="@+id/txt_amount"
+            android:padding="@dimen/_5sdp"
+            android:text="Per Serving including discount."
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txt_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:text="Biryani"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_ratingCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/_5sdp"
+            android:text="(815)"
+            android:textSize="20sp"
+            android:visibility="invisible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/txt_ratingCount"
+            android:padding="@dimen/_5sdp"
+            android:text="3.9"
+            android:textColor="#FFDF00"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
