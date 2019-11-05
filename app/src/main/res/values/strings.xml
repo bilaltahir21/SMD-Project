@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">MR. Tiffin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="per_serving_including_discount">Per Serving including discount.</string>
+    <string name="price">150</string>
+    <string name="deliciously_cooked_like_home">Deliciously Cooked like Home</string>
+    <string name="reted">Reted</string>
+    <string name="_3_9">3.9</string>
+    <string name="_815">(815)</string>
+    <string name="biryani">Biryani</string>
+    <string name="free_delivery">FREE DELIVERY</string>
+    <string name="flat_pff">Flat 50% off</string>
+    <string name="internet_not_avilable">Internet Not Avilable!</string>
+    <string name="check_connection_and_try_again">Check Connection and Try again.</string>
+    <string name="change_address">Change Address</string>
+    <string name="log_out">Log Out</string>
+    <string name="_147a">147A</string>
+    <string name="house">House #</string>
+    <string name="lahore">Lahore</string>
+    <string name="city">City</string>
+    <string name="faisal_town">Faisal Town</string>
+    <string name="town">Town</string>
+    <string name="punjab_lahore_faisal_town_147a">Punjab, Lahore, Faisal Town, 147A</string>
+    <string name="address">Address</string>
+    <string name="_923347638921">+923347638921</string>
+    <string name="phone">Phone</string>
+    <string name="mr_tiffin">Mr. Tiffin</string>
+    <string name="name">Name</string>
+    <string name="proceed_order">Proceed Order</string>
+    <string name="itemname">Itemname</string>
+    <string name="size">Size</string>
+    <string name="unit_price">Unit Price</string>
+    <string name="change">Change</string>
+    <string name="write_your_address">Write your Address</string>
+    <string name="retype_password">Retype_password</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="sign_up">Sign_up</string>
+    <string name="already_have_an_account_log_in">Already have an Account? Log In!</string>
+    <string name="contact_923212345678">Contact: +923212345678</string>
+    <string name="last_name">Last_name</string>
+    <string name="first_name">First_name</string>
+    <string name="click_here_for_another_code">Click Here for another Code!</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="no_account_yet_create_one">No Account Yet! Create One.</string>
+    <string name="i_am_just_hungry">I am Just Hungry</string>
+</resources>

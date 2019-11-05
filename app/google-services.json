@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "21358622130",
+    "firebase_url": "https://mr-tiffin-9c49d.firebaseio.com",
+    "project_id": "mr-tiffin-9c49d",
+    "storage_bucket": "mr-tiffin-9c49d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21358622130:android:5b99010eb3df212f1ba0ab",
+        "android_client_info": {
+          "package_name": "com.example.tiffan_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21358622130-c2rdqu5i97cd3s2l89d2qcehcssheecd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tiffan_project",
+            "certificate_hash": "cf8a7c1174738b25777190320421dcdba1aeaa8d"
+          }
+        },
+        {
+          "client_id": "21358622130-bv7qttdg3v3pddc468l7u8a1v0569fgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3ASTnmDs2G7qPFPdgXw3iELp4NRyIh3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21358622130-bv7qttdg3v3pddc468l7u8a1v0569fgi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21358622130:android:317a739c9dbc7e521ba0ab",
+        "android_client_info": {
+          "package_name": "com.fast.tiffan_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21358622130-6tvb9k2m65t4fgnc9ipo2dtpovrlmohf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fast.tiffan_project",
+            "certificate_hash": "838a3a28e9d311ec87464f87303ef014173fdba8"
+          }
+        },
+        {
+          "client_id": "21358622130-3au1vvophg9c7v79he7ea8lupolk6e0s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fast.tiffan_project",
+            "certificate_hash": "cf8a7c1174738b25777190320421dcdba1aeaa8d"
+          }
+        },
+        {
+          "client_id": "21358622130-bv7qttdg3v3pddc468l7u8a1v0569fgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3ASTnmDs2G7qPFPdgXw3iELp4NRyIh3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21358622130-bv7qttdg3v3pddc468l7u8a1v0569fgi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
