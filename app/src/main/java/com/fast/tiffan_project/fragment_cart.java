@@ -49,7 +49,7 @@ public class fragment_cart extends Fragment {
             settingTheRecyclerView();
             myDatabaseReference = FirebaseDatabase.getInstance().getReference();
             mAuth = FirebaseAuth.getInstance();
-            fetchFromDatabase();
+//            fetchFromDatabase();
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }
@@ -99,7 +99,7 @@ public class fragment_cart extends Fragment {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
             }
         });
         Toast.makeText(context, rootRef.getKey(), Toast.LENGTH_SHORT).show();
@@ -115,7 +115,7 @@ public class fragment_cart extends Fragment {
 //        Array_Cart = new ArrayList<DataListForCart>();
         Array_Cart = MyCart.getCartItems();
         proceed = view.findViewById(R.id.btn_proceed);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_cart);
+        recyclerView = view.findViewById(R.id.recyclerView_cart);
     }
 
     private void settingTheRecyclerView() {

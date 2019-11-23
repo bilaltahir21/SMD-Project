@@ -139,7 +139,7 @@ public class fragment_profile extends Fragment {
         address = view.findViewById(R.id.txt_address);
         city = view.findViewById(R.id.txt_city);
         town = view.findViewById(R.id.txt_town);
-        street=view.findViewById(R.id.street);
+        street=view.findViewById(R.id.txt_streetNum);
         house_num = view.findViewById(R.id.txt_houseNum);
     }
 

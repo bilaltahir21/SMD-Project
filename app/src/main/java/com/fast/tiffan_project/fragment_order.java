@@ -13,6 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
@@ -26,11 +31,12 @@ import androidx.viewpager.widget.ViewPager;
 
 public class fragment_order extends Fragment{
 
-            private RecyclerView recyclerView;
-            private FirebaseRecyclerAdapter adapter;
-            private Context context;
-            private ArrayList<DataListOfHistory> array;
-            public historyAdaptor ha;
+    DatabaseReference myDatabaseReference;
+    private RecyclerView recyclerView;
+    private FirebaseRecyclerAdapter adapter;
+    private Context context;
+    private ArrayList<DataListOfHistory> array;
+    public historyAdaptor ha;
 
 
             @Nullable
@@ -38,6 +44,7 @@ public class fragment_order extends Fragment{
             public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
                 View view = inflater.inflate(R.layout.fragment_order , null);
 
+//                DisplayOrders("+923337204522");
                 recyclerView = view.findViewById(R.id.menu_recyclerView);
 //                recyclerView.setHasFixedSize(true);
                 this.context=getContext();
@@ -62,6 +69,33 @@ public class fragment_order extends Fragment{
                 array.add(d4);
             }
 
+
+    private void DisplayOrders(final String number) {
+
+        myDatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(number).child("Order");
+
+        myDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                try {
+                    for (DataSnapshot uniqueKeySnapshot: dataSnapshot.getChildren()){
+                        String key = uniqueKeySnapshot.getKey();
+                        Toast.makeText(getContext(), key , Toast.LENGTH_LONG).show();
+                    }
+                }
+                catch (Exception a)
+                {
+                    Toast.makeText(getContext() , a.toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
             @Override
             public void onStop() {
                 super.onStop();

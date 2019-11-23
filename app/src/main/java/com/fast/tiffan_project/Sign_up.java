@@ -231,6 +231,15 @@ public class Sign_up extends AppCompatActivity {
                                                     .setValue("Female");
                                         }
 
+                                        myDatabaseReference.child("Users").child(phoneNumber.getText().toString()).child("Address").child("City")
+                                                .setValue("City");
+                                        myDatabaseReference.child("Users").child(phoneNumber.getText().toString()).child("Address").child("House")
+                                                .setValue("House");
+                                        myDatabaseReference.child("Users").child(phoneNumber.getText().toString()).child("Address").child("Street")
+                                                .setValue("Street");
+                                        myDatabaseReference.child("Users").child(phoneNumber.getText().toString()).child("Address").child("Town")
+                                                .setValue("Town");
+
                                         Toast.makeText(Sign_up.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
                                         // Toast.makeText(Sign_up.this, "Congratulations, you're logged in Successfully.", Toast.LENGTH_SHORT).show();
                                         Intent returnIntent = new Intent();
