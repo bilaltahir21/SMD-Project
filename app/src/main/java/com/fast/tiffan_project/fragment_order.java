@@ -29,7 +29,7 @@ public class fragment_order extends Fragment{
             private RecyclerView recyclerView;
             private FirebaseRecyclerAdapter adapter;
             private Context context;
-            public ArrayList<DataListOfHistory> array;
+            private ArrayList<DataListOfHistory> array;
             public historyAdaptor ha;
 
 
