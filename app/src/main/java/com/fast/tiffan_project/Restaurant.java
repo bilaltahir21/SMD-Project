@@ -14,10 +14,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class Restaurant extends AppCompatActivity  {
 
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     ViewPager viewpager ;
     PagerViewAdapter pagerView_adapter;
     private CartItems MyCart = CartItems.get_Instance();
@@ -36,7 +38,19 @@ public class Restaurant extends AppCompatActivity  {
             Redirecting();
 
 
+
             setContentView(R.layout.activity_restaurant);
+
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+            Bundle bundle = new Bundle();
+            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, String.valueOf(2));
+            String name = "Menue";
+            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name);
+            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+
+
 
             viewpager = findViewById(R.id.fragment_container);
             pagerView_adapter = new PagerViewAdapter(getSupportFragmentManager(), 4);
