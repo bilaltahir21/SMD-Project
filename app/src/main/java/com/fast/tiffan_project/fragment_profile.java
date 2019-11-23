@@ -10,11 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
 import com.crashlytics.android.Crashlytics;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-=======
->>>>>>> f657831e1ea6e7c014b0d19412ecd270499eaa43
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
