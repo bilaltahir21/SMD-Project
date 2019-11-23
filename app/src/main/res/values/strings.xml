@@ -8,6 +8,7 @@
     <string name="price">150</string>
     <string name="deliciously_cooked_like_home">Deliciously Cooked like Home</string>
     <string name="reted">Reted</string>
+    <string name="address">Address</string>
     <string name="_3_9">3.9</string>
     <string name="_815">(815)</string>
     <string name="biryani">Biryani</string>
@@ -24,7 +25,7 @@
     <string name="faisal_town">Faisal Town</string>
     <string name="town">Town</string>
     <string name="punjab_lahore_faisal_town_147a">Punjab, Lahore, Faisal Town, 147A</string>
-    <string name="address">Address</string>
+    <string name="address_changing">Do you want to change address:</string>
     <string name="_923347638921">+923347638921</string>
     <string name="phone">Phone</string>
     <string name="mr_tiffin">Mr. Tiffin</string>
@@ -34,7 +35,7 @@
     <string name="size">Size</string>
     <string name="unit_price">Unit Price</string>
     <string name="change">Change</string>
-    <string name="write_your_address">Write your Address</string>
+    <string name="write_your_address">To a temporary address.</string>
     <string name="retype_password">Retype_password</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
@@ -48,5 +49,12 @@
     <string name="password">Password</string>
     <string name="log_in">Log in</string>
     <string name="no_account_yet_create_one">No Account Yet! Create One.</string>
-    <string name="i_am_just_hungry">I am Just Hungry</string>
+    <string name="i_am_just_hungry">Default Address</string>
+    <string name="details">Details</string>
+    <string name="sep_24th_2019">Sep 24th,2019</string>
+    <string name="_264_block_a_johar_town">264 Block A Johar Town</string>
+    <string name="_820">820</string>
+    <string name="rs">Rs:</string>
+    <string name="delivered">\'Delivered\'</string>
+    <string name="status">Status:</string>
 </resources>
