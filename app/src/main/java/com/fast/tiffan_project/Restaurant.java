@@ -1,8 +1,6 @@
 package com.fast.tiffan_project;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +11,11 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
@@ -24,6 +27,7 @@ public class Restaurant extends AppCompatActivity  {
     PagerViewAdapter pagerView_adapter;
     private CartItems MyCart = CartItems.get_Instance();
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +35,9 @@ public class Restaurant extends AppCompatActivity  {
         if (!isNetworkAvailable()) {
             Toast.makeText(getApplicationContext(), "NETWORK NOT AVAILABLE!", Toast.LENGTH_LONG);
             setContentView(R.layout.no_internet);
-        }
-
-        else {
+        } else {
 
             Redirecting();
-
 
 
             setContentView(R.layout.activity_restaurant);
@@ -48,8 +49,6 @@ public class Restaurant extends AppCompatActivity  {
             bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name);
             bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
             mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-
-
 
 
             viewpager = findViewById(R.id.fragment_container);
@@ -123,7 +122,6 @@ public class Restaurant extends AppCompatActivity  {
                     return true;
                 }
             });
-
         }
 
     }
