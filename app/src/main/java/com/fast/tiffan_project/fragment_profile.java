@@ -3,7 +3,6 @@ package com.fast.tiffan_project;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,8 +21,6 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -33,6 +29,7 @@ public class fragment_profile extends Fragment {
     DatabaseReference myDatabaseReference;
 
     TextView name, phone, address, town, city , house_num , street;
+    String mAddress=null;
 
     @Nullable
     @Override
@@ -94,16 +91,22 @@ public class fragment_profile extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String txt_name, txt_city, txt_town, txt_street, txt_house;
-
                 try {
-
-
                     txt_name = dataSnapshot.child("First Name").getValue().toString() + " " + dataSnapshot.child("Last Name").getValue().toString();
                     txt_city = dataSnapshot.child("Address").child("City").getValue().toString();
                     txt_town = dataSnapshot.child("Address").child("Town").getValue().toString();
                     txt_street = dataSnapshot.child("Address").child("Street").getValue().toString();
                     txt_house = dataSnapshot.child("Address").child("House").getValue().toString();
                     String txt_address = txt_town + ", " + txt_city + ", " + txt_house;
+
+                    AddressSingleton addressSingleton = AddressSingleton.get_Instance();
+                    addressSingleton.setmCity(txt_city);
+                    addressSingleton.setmTown(txt_town);
+                    addressSingleton.setmStreet(txt_street);
+                    addressSingleton.setmHouse(txt_house);
+                    addressSingleton.setmAddress(txt_address);
+
+                    mAddress=txt_address;
 
                     name.setAllCaps(true);
                     name.setText(txt_name);

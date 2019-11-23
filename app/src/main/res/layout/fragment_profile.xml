@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f5f5f5"
@@ -64,7 +63,9 @@
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:hint="@string/mr_tiffin"
+                    android:text="@string/mr_tiffin"
                     android:padding="@dimen/_12sdp"
+                    android:textColor="#ACACAC"
                     android:textSize="14sp" />
             </LinearLayout>
             <View
@@ -94,7 +95,9 @@
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:hint="@string/_923347638921"
+                    android:text="@string/_923347638921"
                     android:padding="@dimen/_12sdp"
+                    android:textColor="#ACACAC"
                     android:textSize="14sp" />
 <!--                <TextView-->
 <!--                    android:id="@+id/txt_number"-->
@@ -136,6 +139,8 @@
                     android:background="@color/colorfields"
                     android:id="@+id/txt_address"
                     android:hint="@string/punjab_lahore_faisal_town_147a"
+                    android:text="@string/punjab_lahore_faisal_town_147a"
+                    android:textColor="#ACACAC"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -149,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:padding="@dimen/_12sdp"
-                    android:hint="@string/town"
+                    android:text="@string/town"
                     android:textSize="14sp" />
 
                 <TextView
@@ -160,6 +165,8 @@
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:hint="@string/faisal_town"
+                    android:text="@string/faisal_town"
+                    android:textColor="#ACACAC"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -184,6 +191,8 @@
                     android:layout_weight="1"
                     android:background="@color/colorfields"
                     android:hint="@string/lahore"
+                    android:text="@string/lahore"
+                    android:textColor="#ACACAC"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -209,6 +218,8 @@
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:hint="@string/_147a"
+                    android:text="@string/_147a"
+                    android:textColor="#ACACAC"
                     android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
