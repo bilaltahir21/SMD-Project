@@ -18,7 +18,6 @@ public class PagerViewAdapter extends FragmentStatePagerAdapter {
         super(fm, behavior);
     }
 
-
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;

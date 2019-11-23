@@ -10,7 +10,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,18 +23,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class fragment_profile extends Fragment {
 
-    DatabaseReference myDatabaseReference;
+    private DatabaseReference myDatabaseReference;
 
-    TextView name, phone, address, town, city , house_num , street;
-    String mAddress=null;
+    private TextView name, phone, address, town, city , house_num , street;
+    private String mAddress=null;
 
     @Nullable
     @Override
@@ -61,7 +61,7 @@ public class fragment_profile extends Fragment {
             public void onClick(View v) {
                 DialogActivity alert=new DialogActivity();
                 alert.show(getFragmentManager(), "PopUp");
-                Crashlytics.getInstance().crash(); // Force a crash
+                //Crashlytics.getInstance().crash(); // Force a crash
             }
         });
 

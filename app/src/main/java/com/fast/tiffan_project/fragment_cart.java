@@ -57,10 +57,9 @@ public class fragment_cart extends Fragment {
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddressConfirmation addressConfirmation = new AddressConfirmation();
-                addressConfirmation.show(getFragmentManager(), "Address Confirmation");
-
                 if (MyCart.getSize() != 0) {
+                    AddressConfirmation addressConfirmation = new AddressConfirmation();
+                    addressConfirmation.show(getFragmentManager(), "Address Confirmation");
                     placeOrderFireBase();
                 } else {
                     Toast toast = Toast.makeText(getActivity(), "Your Cart is Empty!", Toast.LENGTH_LONG);
