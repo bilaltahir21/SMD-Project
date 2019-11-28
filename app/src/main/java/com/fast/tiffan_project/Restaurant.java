@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -13,16 +14,18 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class Restaurant extends AppCompatActivity  {
 
 
-    private FirebaseAnalytics mFirebaseAnalytics;
+//    private FirebaseAnalytics mFirebaseAnalytics;
     ViewPager viewpager ;
     PagerViewAdapter pagerView_adapter;
     private CartItems MyCart = CartItems.get_Instance();
@@ -33,7 +36,7 @@ public class Restaurant extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
 
         if (!isNetworkAvailable()) {
-            Toast.makeText(getApplicationContext(), "NETWORK NOT AVAILABLE!", Toast.LENGTH_LONG);
+//            Toast.makeText(getApplicationContext(), "NETWORK NOT AVAILABLE!", Toast.LENGTH_LONG);
             setContentView(R.layout.no_internet);
         } else {
 
@@ -43,7 +46,7 @@ public class Restaurant extends AppCompatActivity  {
             setContentView(R.layout.activity_restaurant);
 
             //Fire Base Analytics
-            mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+//            mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
 
             viewpager = findViewById(R.id.fragment_container);
@@ -56,6 +59,7 @@ public class Restaurant extends AppCompatActivity  {
             bottomNavigationView.setElevation(100);
 
 
+            final ActionBar toolbar = getSupportActionBar();
 //            bottomNavigationView.setOnNavigationItemSelectedListener(bottommOnNavigationItemSelectedListener);
 
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -94,27 +98,27 @@ public class Restaurant extends AppCompatActivity  {
 //                    .addToBackStack(null);
 
 
-//            viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//                @Override
-//                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//                }
-//
-//                @Override
-//                public void onPageSelected(int position) {
-//
-//                }
-//
-//                @Override
-//                public void onPageScrollStateChanged(int state) {
-//
-//                }
-//            });
+            viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
 
             viewpager.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    return true;
+                    return false;
                 }
             });
         }

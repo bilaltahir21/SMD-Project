@@ -3,6 +3,7 @@ package com.fast.tiffan_project;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -107,13 +109,26 @@ public class fragment_menu extends Fragment{
                                  String title = item.getMenu_title();
                                  String price = item.getPrice();
 
-                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                 /*AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                  builder.setMessage("Added to Cart");
                                  AlertDialog dialog = builder.create();
-                                 dialog.show();
-
+                                 dialog.show();*/
                                  DataListForCart cartItem = new DataListForCart(URI , title , price , discount);
+                                 if(!(MyCart.consists(cartItem))) {
+                                     Snackbar snack=Snackbar.make(v, "Item Added To Cart", Snackbar.LENGTH_LONG)
+                                             .setAction("Action", null);
+                                     snack.setTextColor(Color.YELLOW);
+                                     snack.show();
+                                 }
+                                 else
+                                 {
+                                     Snackbar snack=Snackbar.make(v, "Already There, Quantity increased", Snackbar.LENGTH_LONG)
+                                             .setAction("Action", null);
+                                     snack.setTextColor(Color.RED);
+                                     snack.show();
+                                 }
                                  MyCart.addToCart(cartItem);
+
                              }
                             catch(Exception A)
                             {

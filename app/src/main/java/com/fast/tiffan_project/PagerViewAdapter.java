@@ -1,6 +1,8 @@
 package com.fast.tiffan_project;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -18,6 +20,7 @@ public class PagerViewAdapter extends FragmentStatePagerAdapter {
         super(fm, behavior);
     }
 
+    @NotNull
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
@@ -35,6 +38,7 @@ public class PagerViewAdapter extends FragmentStatePagerAdapter {
                 fragment = fragmentCart;
                 break;
         }
+        assert fragment != null;
         return fragment;
     }
 
