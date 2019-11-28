@@ -135,21 +135,22 @@ public class fragment_order extends Fragment {
 //                                        Array.add(temp);
                                         History_Array.add(temp);
 
+                                        settingTheRecyclerView(History_Array);
 
-                                        int Bill = History_Array.get(0).getBill();
-
-                                        if (Bill > 10) {
-                                            Toast.makeText(getActivity(), "Small", Toast.LENGTH_LONG).show();
-                                            settingTheRecyclerView(History_Array);
-                                        }
-
-                                        if(History_Array!= null){
-                                            for (int i=0; i< History_Array.size(); i++){
-                                                String Name = History_Array.get(i).getStatus();
-                                                Toast.makeText(getContext() , Name, Toast.LENGTH_LONG).show();
-
-                                            }
-                                        }
+//                                        int Bill = History_Array.get(0).getBill();
+//
+//                                        if (Bill > 10) {
+//                                            Toast.makeText(getActivity(), "Small", Toast.LENGTH_LONG).show();
+//                                            settingTheRecyclerView(History_Array);
+//                                        }
+//
+//                                        if(History_Array!= null){
+//                                            for (int i=0; i< History_Array.size(); i++){
+//                                                String Name = History_Array.get(i).getStatus();
+//                                                Toast.makeText(getContext() , Name, Toast.LENGTH_LONG).show();
+//
+//                                            }
+//                                        }
 
                                     }
                                 } catch (Exception a) {
