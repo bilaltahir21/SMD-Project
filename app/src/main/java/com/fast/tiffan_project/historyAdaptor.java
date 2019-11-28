@@ -12,53 +12,48 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import static android.content.Context.MODE_PRIVATE;
+import static java.lang.String.valueOf;
 
 public class historyAdaptor  extends RecyclerView.Adapter<historyAdaptor.MyViewHolder>  {
-    ArrayList<DataListOfHistory> historyList;
+    private ArrayList<DataListOfHistory> Array;
     Context context;
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView status,bill,address,date;// init the item view's
-        Button details;
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            // get the reference of item view's
-            status = (TextView) itemView.findViewById(R.id.status);
-            bill = (TextView) itemView.findViewById(R.id.bill);
-            address=(TextView) itemView.findViewById(R.id.address);
-            date=(TextView) itemView.findViewById(R.id.date);
-            details=(Button) itemView.findViewById(R.id.button2);
-        }
-    }
-    public historyAdaptor(ArrayList<DataListOfHistory> hlist,Context context) {
+
+    historyAdaptor(ArrayList<DataListOfHistory> Array, Context context) {
         this.context = context;
-        this.historyList = hlist;
+        this.Array = Array;
     }
+    @NotNull
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // infalte the item Layout
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.history, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view =inflater.inflate(R.layout.history,parent,false);
         // set the view's size, margins, paddings and layout parameters
-        MyViewHolder vh = new MyViewHolder(v); // pass the view to View Holder
-        return vh;
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         // set the data in items
-        final DataListOfHistory c=historyList.get(position);
-        holder.status.setText(c.getStatus());
-        holder.bill.setText(c.getBill());
-        holder.address.setText(c.getAddress());
-        holder.date.setText(c.getDate());
+        final DataListOfHistory value = Array.get(position);
+
+        holder.status.setText(value.getStatus());
+        holder.bill.setText(valueOf(value.getBill()));
+        holder.address.setText(value.getAddress());
+//        holder.date.setText(c.getDate());
 
         // implement setOnClickListener event on item view.
+
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // display a toast with person name on item click
-                callnext(position);
+//                callnext(position);
             }
         });
     }
@@ -68,11 +63,28 @@ public class historyAdaptor  extends RecyclerView.Adapter<historyAdaptor.MyViewH
     }
     @Override
     public int getItemCount() {
-        return historyList.size();
+        return Array.size();
     }
-    public void callnext(int p)
+
+    private void callnext(int p)
     {
         Toast.makeText(this.context, "Not Implemented yet ", Toast.LENGTH_SHORT).show();
+    }
+
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView status,bill,address;// init the item view's
+        Button details;
+
+
+        MyViewHolder(View itemView) {
+            super(itemView);
+            // get the reference of item view's
+            status = itemView.findViewById(R.id.txt_status);
+            bill =  itemView.findViewById(R.id.txt_bill);
+            address = itemView.findViewById(R.id.txt_HistoryAddress);
+//            date = itemView.findViewById(R.id.date);
+            details = itemView.findViewById(R.id.btn_details);
+        }
     }
 
 }

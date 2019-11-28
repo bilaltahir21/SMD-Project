@@ -26,19 +26,19 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class fragment_cart extends Fragment {
 
     Context context;
-    RecyclerView recyclerView;
-    AdapterForCart adapter;
-    ArrayList<DataListForCart> Array_Cart;
+    private RecyclerView recyclerView;
+    private AdapterForCart adapter;
+    private ArrayList<DataListForCart> Array_Cart;
     private CartItems MyCart = CartItems.get_Instance();
-    DatabaseReference myDatabaseReference;
-    private FirebaseAuth mAuth;
-    Button proceed;
+    private DatabaseReference myDatabaseReference;
+    private Button proceed;
 
     @Nullable
     @Override
@@ -48,7 +48,7 @@ public class fragment_cart extends Fragment {
             setVariables(view);
             settingTheRecyclerView();
             myDatabaseReference = FirebaseDatabase.getInstance().getReference();
-            mAuth = FirebaseAuth.getInstance();
+//            FirebaseAuth mAuth = FirebaseAuth.getInstance();
 //            fetchFromDatabase();
         } catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
@@ -59,7 +59,7 @@ public class fragment_cart extends Fragment {
             public void onClick(View v) {
                 if (MyCart.getSize() != 0) {
                     AddressConfirmation addressConfirmation = new AddressConfirmation();
-                    addressConfirmation.show(getFragmentManager(), "Address Confirmation");
+                    addressConfirmation.show(Objects.requireNonNull(getFragmentManager()), "Address Confirmation");
                     placeOrderFireBase();
                 } else {
                     Toast toast = Toast.makeText(getActivity(), "Your Cart is Empty!", Toast.LENGTH_LONG);

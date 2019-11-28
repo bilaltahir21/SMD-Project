@@ -199,8 +199,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/_5sdp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="@dimen/_80sdp"
@@ -276,7 +275,7 @@
 
                 <Button
                     android:id="@+id/btn_changeAdd"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_background"
                     android:layout_weight="1"

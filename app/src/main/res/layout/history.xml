@@ -34,7 +34,7 @@
                 android:textSize="@dimen/_18sdp" />
 
             <TextView
-                android:id="@+id/status"
+                android:id="@+id/txt_status"
                 android:layout_width="@dimen/_110sdp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -51,7 +51,7 @@
                 android:textSize="@dimen/_20sdp" />
 
             <TextView
-                android:id="@+id/bill"
+                android:id="@+id/txt_bill"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -71,26 +71,26 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/address"
+                    android:id="@+id/txt_HistoryAddress"
                     android:layout_width="@dimen/_200sdp"
                     android:layout_height="wrap_content"
                     android:gravity="center|left"
                     android:paddingStart="@dimen/_10sdp"
                     android:text="@string/_264_block_a_johar_town"
                     android:textSize="@dimen/_12sdp"
-                    tools:ignore="RtlHardcoded"></TextView>
+                    tools:ignore="RtlHardcoded" />
 
-                <TextView
-                    android:id="@+id/date"
-                    android:layout_width="@dimen/_200sdp"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:gravity="center|left"
-                    android:includeFontPadding="true"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:text="@string/sep_24th_2019"
-                    android:textSize="@dimen/_12sdp"
-                    tools:ignore="RtlHardcoded"></TextView>
+<!--                <TextView-->
+<!--                    android:id="@+id/date"-->
+<!--                    android:layout_width="@dimen/_200sdp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawablePadding="@dimen/_5sdp"-->
+<!--                    android:gravity="center|left"-->
+<!--                    android:includeFontPadding="true"-->
+<!--                    android:paddingStart="@dimen/_10sdp"-->
+<!--                    android:text="@string/sep_24th_2019"-->
+<!--                    android:textSize="@dimen/_12sdp"-->
+<!--                    tools:ignore="RtlHardcoded"></TextView>-->
             </LinearLayout>
 
             <LinearLayout
@@ -99,7 +99,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btn_details"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"

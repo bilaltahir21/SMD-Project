@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -28,16 +31,17 @@ public class AdapterForCart  extends RecyclerView.Adapter<AdapterForCart.MyViewH
         this.Array=Array;
         this.context=context;
     }
+    @NotNull
     @Override
     public AdapterForCart.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater =LayoutInflater.from(parent.getContext());
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view =inflater.inflate(R.layout.cart_layout,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final AdapterForCart.MyViewHolder holder, final int position) {
-        if (Array != null && holder != null) {
+    public void onBindViewHolder(@NotNull final AdapterForCart.MyViewHolder holder, final int position) {
+        if (Array != null) {
             final DataListForCart Value = Array.get(position);
             // downnload and set image
 
