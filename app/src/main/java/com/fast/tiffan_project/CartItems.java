@@ -25,7 +25,7 @@ public class CartItems {
         return CartItems;
     }
 
-    private boolean consists(DataListForCart item){
+    boolean consists(DataListForCart item){
         for(int i = CartItems.size()-1; i>=0; i--){
             if(CartItems.get(i).itemName.equals(item.itemName)){
                 return true;
