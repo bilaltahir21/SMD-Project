@@ -1,12 +1,12 @@
 package com.fast.tiffan_project;
 
 
-import org.jetbrains.annotations.NotNull;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import org.jetbrains.annotations.NotNull;
 
 public class PagerViewAdapter extends FragmentStatePagerAdapter {
 
@@ -24,7 +24,7 @@ public class PagerViewAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
-        switch (position){
+        switch (position) {
             case 0:
                 fragment = fragmentMenu;
                 break;

@@ -1,20 +1,18 @@
 package com.fast.tiffan_project;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.location.Address;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,18 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
-
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Objects;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -76,7 +64,7 @@ public class fragment_order extends Fragment {
         //                loadhistory();
         //                this.ha=new historyAdaptor(array,context);
 
-        if(History_Array!=null){
+        if (History_Array != null) {
 //            int Bill = History_Array.get(0).getBill();
 //
 //            if (Bill < 10) {
@@ -100,7 +88,7 @@ public class fragment_order extends Fragment {
 
 
     private void DisplayOrders(final String number) {
-        
+
         History_Array.clear();
         myDatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(number).child("Order");
 
@@ -154,7 +142,7 @@ public class fragment_order extends Fragment {
 
                                     }
                                 } catch (Exception a) {
-                                    Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
+                                    // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
                                 }
                             }
 
@@ -179,7 +167,7 @@ public class fragment_order extends Fragment {
                     }
 
                 } catch (Exception a) {
-                    Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
+                    // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
                 }
 
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fast.tiffan_project">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -20,17 +21,17 @@
         <activity android:name=".Sign_up" />
 
         <activity android:name=".MainActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
 
     </application>
 
-<!--    android:theme="@style/Theme.AppCompat.Light.NoActionBar"-->
+    <!--    android:theme="@style/Theme.AppCompat.Light.NoActionBar"-->
 
 </manifest>
 
-<!--    android:theme="@style/AppTheme"-->
+    <!--    android:theme="@style/AppTheme"-->

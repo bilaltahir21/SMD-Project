@@ -4,29 +4,25 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
-public class Restaurant extends AppCompatActivity  {
+public class Restaurant extends AppCompatActivity {
 
 
-//    private FirebaseAnalytics mFirebaseAnalytics;
-    ViewPager viewpager ;
+    //    private FirebaseAnalytics mFirebaseAnalytics;
+    ViewPager viewpager;
     PagerViewAdapter pagerView_adapter;
     private CartItems MyCart = CartItems.get_Instance();
 
@@ -67,20 +63,20 @@ public class Restaurant extends AppCompatActivity  {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.action_home:
-                            viewpager.setCurrentItem(0 , false);
-                            Toast.makeText(Restaurant.this, "Home", Toast.LENGTH_SHORT).show();
+                            viewpager.setCurrentItem(0, false);
+                            //Toast.makeText(Restaurant.this, "Home", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.action_orders:
-                            viewpager.setCurrentItem(1 , false);
-                            Toast.makeText(Restaurant.this, "Orders", Toast.LENGTH_SHORT).show();
+                            viewpager.setCurrentItem(1, false);
+                            //Toast.makeText(Restaurant.this, "Orders", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.action_profile:
-                            viewpager.setCurrentItem(2 , false);
-                            Toast.makeText(Restaurant.this, "Profile", Toast.LENGTH_SHORT).show();
+                            viewpager.setCurrentItem(2, false);
+                            //Toast.makeText(Restaurant.this, "Profile", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.action_cart:
                             viewpager.setCurrentItem(3, false);
-                            Toast.makeText(Restaurant.this, "Cart", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(Restaurant.this, "Cart", Toast.LENGTH_SHORT).show();
                             break;
                     }
                     return true;
@@ -130,7 +126,7 @@ public class Restaurant extends AppCompatActivity  {
         SharedPreferences prefs = getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
         String Log_In = prefs.getString("LogIn", "false");//"No name defined" is the default value.
 
-        if(Log_In.equals("false")){
+        if (Log_In.equals("false")) {
             startActivity(new Intent(Restaurant.this, MainActivity.class));
             finish();
         }

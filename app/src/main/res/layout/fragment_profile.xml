@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,20 +32,21 @@
                 android:id="@+id/img"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_190sdp"
+                android:alpha="0.8"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo"
-                android:alpha="0.8" />
+                android:src="@drawable/logo" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="wrap_content"
@@ -63,21 +63,22 @@
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:hint="@string/mr_tiffin"
-                    android:text="@string/mr_tiffin"
                     android:padding="@dimen/_12sdp"
+                    android:text="@string/mr_tiffin"
                     android:textColor="#ACACAC"
                     android:textSize="14sp" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/_5sdp">
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="@dimen/_80sdp"
@@ -95,33 +96,34 @@
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:hint="@string/_923347638921"
-                    android:text="@string/_923347638921"
                     android:padding="@dimen/_12sdp"
+                    android:text="@string/_923347638921"
                     android:textColor="#ACACAC"
                     android:textSize="14sp" />
-<!--                <TextView-->
-<!--                    android:id="@+id/txt_number"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="#f0f0f4"-->
-<!--                    android:hint="+92-345-8181333"-->
-<!--                    android:padding="@dimen/_12sdp"-->
-<!--                    android:textSize="14sp" />-->
-
+                <!--                <TextView-->
+                <!--                    android:id="@+id/txt_number"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="#f0f0f4"-->
+                <!--                    android:hint="+92-345-8181333"-->
+                <!--                    android:padding="@dimen/_12sdp"-->
+                <!--                    android:textSize="14sp" />-->
 
 
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_5sdp">
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="@dimen/_80sdp"
@@ -132,18 +134,19 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/txt_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@color/colorfields"
-                    android:id="@+id/txt_address"
                     android:hint="@string/punjab_lahore_faisal_town_147a"
+                    android:padding="@dimen/_12sdp"
                     android:text="@string/punjab_lahore_faisal_town_147a"
                     android:textColor="#ACACAC"
-                    android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,18 +161,19 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="0dp"
                     android:id="@+id/txt_town"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:hint="@string/faisal_town"
+                    android:padding="@dimen/_12sdp"
                     android:text="@string/faisal_town"
                     android:textColor="#ACACAC"
-                    android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -184,18 +188,19 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="0dp"
                     android:id="@+id/txt_city"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@color/colorfields"
                     android:hint="@string/lahore"
+                    android:padding="@dimen/_12sdp"
                     android:text="@string/lahore"
                     android:textColor="#ACACAC"
-                    android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -210,16 +215,16 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="0dp"
                     android:id="@+id/txt_houseNum"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:hint="@string/_147a"
+                    android:padding="@dimen/_12sdp"
                     android:text="@string/_147a"
                     android:textColor="#ACACAC"
-                    android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -227,8 +232,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/_5sdp">
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="@dimen/_80sdp"
@@ -239,50 +244,50 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="0dp"
                     android:id="@+id/txt_streetNum"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="#f0f0f4"
                     android:hint="@string/_13"
+                    android:padding="@dimen/_12sdp"
                     android:text="@string/_147a"
                     android:textColor="#ACACAC"
-                    android:padding="@dimen/_12sdp"
                     android:textSize="14sp" />
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#ACACAC"/>
+                android:background="#ACACAC" />
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_logOut"
                     android:layout_width="wrap_content"
-                    android:background="@drawable/btn_background"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:textSize="12sp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:text="@string/log_out"/>
+                    android:backgroundTint="@color/btn_color"
+                    android:text="@string/log_out"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_changeAdd"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_background"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:text="@string/change_address"/>
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/btn_color"
+                    android:text="@string/change_address"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 

@@ -1,13 +1,14 @@
 package com.fast.tiffan_project;
 
 public class DataListForCart {
-    String URI,itemName,UnitPrice;
-    private int Quantity , Discount;
+    String URI, itemName, UnitPrice;
+    private int Quantity, Discount;
 
 
-    public DataListForCart(){
+    public DataListForCart() {
 
     }
+
     public DataListForCart(String URI, String itemName, String unitPrice, int Discount) {
         this.URI = URI;
         this.itemName = itemName;

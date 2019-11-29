@@ -11,6 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
@@ -23,13 +29,6 @@ import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 
 public class fragment_menu extends Fragment {
@@ -114,12 +113,13 @@ public class fragment_menu extends Fragment {
                                  dialog.show();*/
                                 DataListForCart cartItem = new DataListForCart(URI, title, price, discount);
                                 if (!(MyCart.consists(cartItem))) {
-                                    Snackbar snack = Snackbar.make(v, "Item Added To Cart", Snackbar.LENGTH_LONG)
+                                    Snackbar snack = Snackbar.make(v, "Item Added To Cart", Snackbar.LENGTH_SHORT)
                                             .setAction("Action", null);
                                     snack.setTextColor(Color.YELLOW);
+
                                     snack.show();
                                 } else {
-                                    Snackbar snack = Snackbar.make(v, "Already There, Quantity increased", Snackbar.LENGTH_LONG)
+                                    Snackbar snack = Snackbar.make(v, "Already There, Quantity increased", Snackbar.LENGTH_SHORT)
                                             .setAction("Action", null);
                                     snack.setTextColor(Color.RED);
                                     snack.show();
@@ -134,7 +134,7 @@ public class fragment_menu extends Fragment {
                     });
 
                 } catch (Exception Ex) {
-                    Toast.makeText(getContext(), "OnBindViewHolder  " + Ex.toString(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(), "OnBindViewHolder  " + Ex.toString(), Toast.LENGTH_LONG).show();
                 }
 
             }

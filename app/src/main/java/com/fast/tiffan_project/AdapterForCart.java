@@ -1,41 +1,38 @@
 package com.fast.tiffan_project;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-import static android.content.Context.MODE_PRIVATE;
-
-public class AdapterForCart  extends RecyclerView.Adapter<AdapterForCart.MyViewHolder>  {
+public class AdapterForCart extends RecyclerView.Adapter<AdapterForCart.MyViewHolder> {
     private ArrayList<DataListForCart> Array;
     CartItems MyCart = CartItems.get_Instance();
     Context context;
     DatabaseReference myDatabaseReference;
 
-    public AdapterForCart(ArrayList<DataListForCart> Array, Context context)
-    {
-        this.Array=Array;
-        this.context=context;
+    public AdapterForCart(ArrayList<DataListForCart> Array, Context context) {
+        this.Array = Array;
+        this.context = context;
     }
+
     @NotNull
     @Override
     public AdapterForCart.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view =inflater.inflate(R.layout.cart_layout,parent,false);
+        View view = inflater.inflate(R.layout.cart_layout, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -57,23 +54,22 @@ public class AdapterForCart  extends RecyclerView.Adapter<AdapterForCart.MyViewH
             holder.quantity.setText(String.valueOf(Value.getQuantity()));
 
 
-
             holder.increaseQuanity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int quantity= Value.getQuantity();
-                    quantity=quantity+1;
+                    int quantity = Value.getQuantity();
+                    quantity = quantity + 1;
                     MyCart.increseQuantity(Value);
                     Value.setQuantity(quantity);
-                    Array.set(position,Value);
+                    Array.set(position, Value);
                     notifyItemChanged(position);// check it out
                 }
             });
             holder.decreaseQuantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                        int quantity= Value.getQuantity();
-                    if(quantity>1) {
+                    int quantity = Value.getQuantity();
+                    if (quantity > 1) {
                         quantity = quantity - 1;
                         MyCart.decreaseQuantity(Value);
                         Value.setQuantity(quantity);
@@ -85,8 +81,7 @@ public class AdapterForCart  extends RecyclerView.Adapter<AdapterForCart.MyViewH
             holder.removeItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!Array.isEmpty())
-                    {
+                    if (!Array.isEmpty()) {
                         DataListForCart item = Array.get(position);
                         Array.remove(position);
                         notifyItemRemoved(position);
@@ -109,8 +104,8 @@ public class AdapterForCart  extends RecyclerView.Adapter<AdapterForCart.MyViewH
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView image;
-        TextView itemName,unitPrice ,quantity;
-        ImageView increaseQuanity,decreaseQuantity,removeItem;
+        TextView itemName, unitPrice, quantity;
+        ImageView increaseQuanity, decreaseQuantity, removeItem;
         Button proceed;
 
 

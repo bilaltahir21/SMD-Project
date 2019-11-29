@@ -1,26 +1,22 @@
 package com.fast.tiffan_project;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
-import com.google.firebase.database.DatabaseReference;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Objects;
-import static android.content.Context.MODE_PRIVATE;
+
 import static java.lang.String.valueOf;
 
-public class historyAdaptor  extends RecyclerView.Adapter<historyAdaptor.MyViewHolder>  {
+public class historyAdaptor extends RecyclerView.Adapter<historyAdaptor.MyViewHolder> {
     private ArrayList<DataListOfHistory> Array;
     Context context;
 
@@ -28,11 +24,12 @@ public class historyAdaptor  extends RecyclerView.Adapter<historyAdaptor.MyViewH
         this.context = context;
         this.Array = Array;
     }
+
     @NotNull
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // infalte the item Layout
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view =inflater.inflate(R.layout.history,parent,false);
+        View view = inflater.inflate(R.layout.history, parent, false);
         // set the view's size, margins, paddings and layout parameters
         return new MyViewHolder(view);
     }
@@ -57,22 +54,22 @@ public class historyAdaptor  extends RecyclerView.Adapter<historyAdaptor.MyViewH
             }
         });
     }
-    String convert(int d)
-    {
-        return("Progress : "+d+"%");
+
+    String convert(int d) {
+        return ("Progress : " + d + "%");
     }
+
     @Override
     public int getItemCount() {
         return Array.size();
     }
 
-    private void callnext(int p)
-    {
-        Toast.makeText(this.context, "Not Implemented yet ", Toast.LENGTH_SHORT).show();
+    private void callnext(int p) {
+        //Toast.makeText(this.context, "Not Implemented yet ", Toast.LENGTH_SHORT).show();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView status,bill,address;// init the item view's
+        TextView status, bill, address;// init the item view's
         Button details;
 
 
@@ -80,7 +77,7 @@ public class historyAdaptor  extends RecyclerView.Adapter<historyAdaptor.MyViewH
             super(itemView);
             // get the reference of item view's
             status = itemView.findViewById(R.id.txt_status);
-            bill =  itemView.findViewById(R.id.txt_bill);
+            bill = itemView.findViewById(R.id.txt_bill);
             address = itemView.findViewById(R.id.txt_HistoryAddress);
 //            date = itemView.findViewById(R.id.date);
             details = itemView.findViewById(R.id.btn_details);

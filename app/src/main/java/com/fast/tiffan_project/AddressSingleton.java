@@ -19,11 +19,11 @@ public class AddressSingleton {
     }
 
     private AddressSingleton() {
-        txt_city=null;
-        txt_town=null;
-        txt_street=null;
-        txt_house=null;
-        txt_address=null;
+        txt_city = null;
+        txt_town = null;
+        txt_street = null;
+        txt_house = null;
+        txt_address = null;
     }
 
     public static AddressSingleton get_Instance() {

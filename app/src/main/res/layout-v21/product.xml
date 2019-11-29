@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_200sdp"
+    android:background="@color/colorPrimary"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:fadingEdge="horizontal"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_10sdp">
+
+
+<!--    android:weightSum="3"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.8"
+        android:background="#FFFFFF">
+
+<!--        android:background="@color/design_default_color_primary"-->
+
+        <ImageView
+            android:id="@+id/image_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/toast">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/txt_banner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/cardview_light_background"
+            android:text="@string/flat_pff"  />
+
+        <TextView
+            android:id="@+id/txt_banner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_45sdp"
+            android:background="@color/colorAccent"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/free_delivery"
+            android:textAllCaps="true"
+            android:textColor="@color/cardview_light_background"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2.0"
+        android:elevation="@dimen/_200sdp">
+
+<!--        android:background="@color/colorAccent"-->
+
+        <TextView
+            android:id="@+id/txt_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/biryani"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginStart="@dimen/_5sdp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_ratingCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_815"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_alignParentEnd="true"
+            android:textSize="15sp"
+            android:padding="@dimen/_2sdp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/txt_ratingCount"
+            android:text="@string/_3_9"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textStyle="bold"
+            android:padding="@dimen/_2sdp"
+            android:textColor="#FFDF00"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txt_rated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/txt_rating"
+            android:text="@string/reted"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:layout_marginStart="@dimen/_5sdp"
+            />
+
+
+        <TextView
+            android:id="@+id/txt_SEO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_Title"
+            android:text="@string/deliciously_cooked_like_home"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txt_rsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Rs."
+            android:textStyle="bold"
+            android:layout_below="@+id/txt_SEO"
+            android:layout_marginStart="@dimen/_5sdp"
+            />
+        <TextView
+            android:id="@+id/txt_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/price"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@+id/txt_rsLabel"
+            android:layout_below="@id/txt_SEO" />
+        <TextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/per_serving_including_discount"
+            android:layout_toEndOf="@+id/txt_amount"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_below="@id/txt_SEO" />
+
+        <Button
+            android:id="@+id/btn_addToCart"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:textSize="@dimen/_10sdp"
+            android:backgroundTint="@color/btn_color"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textAllCaps="true"
+            android:text="@string/add_to_cart"
+            android:layout_below="@+id/txt_message"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
