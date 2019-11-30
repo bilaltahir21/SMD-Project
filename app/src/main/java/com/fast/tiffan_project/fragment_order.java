@@ -123,6 +123,11 @@ public class fragment_order extends Fragment {
     }
 
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        History_Array.clear();
+    }
 
     @Override
     public void onStop() {
