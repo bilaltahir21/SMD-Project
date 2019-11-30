@@ -97,12 +97,12 @@ public class fragment_order extends Fragment {
 
                                         History_Array.add(temp);
 
-//                                        settingTheRecyclerView(History_Array);
+                                        settingTheRecyclerView(History_Array);
                                     }
                                 } catch (Exception a) {
                                     // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
                                 }
-                                settingTheRecyclerView(History_Array);
+//                                settingTheRecyclerView(History_Array);
                             }
 
                             @Override
