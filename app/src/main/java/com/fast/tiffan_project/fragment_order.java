@@ -44,19 +44,19 @@ public class fragment_order extends Fragment {
     private static ArrayList<DataListOfHistory> History_Array = new ArrayList<>();
     private RecyclerView recyclerView;
     //    private FirebaseRecyclerAdapter adapter;
-    private Context context;
+    //    private Context context;
     private historyAdaptor myAdaptor;
 
     private GenericTypeIndicator<ArrayList<DataListForCart>> genericTypeIndicator
-            = new GenericTypeIndicator<ArrayList<DataListForCart>>() {
-    };
+            = new GenericTypeIndicator<ArrayList<DataListForCart>>() {};
+
     private ArrayList<DataListForCart> History_CartItems = new ArrayList<>();
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_order, null);
+        View view = inflater.inflate(R.layout.fragment_order, container,false);
 
 //        History_Array = null;
         SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
@@ -68,7 +68,7 @@ public class fragment_order extends Fragment {
 
         recyclerView = view.findViewById(R.id.history_recyclerView);
         //                recyclerView.setHasFixedSize(true);
-        this.context = getActivity();
+//        this.context = getActivity();
         //                recyclerView.setLayoutManager(new LinearLayoutManager(context));
         // set a LinearLayoutManager with default vertical orientation
         //                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
@@ -76,39 +76,30 @@ public class fragment_order extends Fragment {
         //                loadhistory();
         //                this.ha=new historyAdaptor(array,context);
 
-        if(History_Array!=null){
+//        if(History_Array!=null){
 //            int Bill = History_Array.get(0).getBill();
 //
 //            if (Bill < 10) {
 //                Toast.makeText(getActivity(), "Small", Toast.LENGTH_LONG).show();
 //            }
 //            settingTheRecyclerView();
-        }
+//        }
         return view;
     }
 
     public void loadhistory() {
-//                DataListOfHistory d1=new DataListOfHistory("Preparing","650","Johar town block A","Nov 05, 2019" , null);
-//                DataListOfHistory d2=new DataListOfHistory("Preparing","650","Johar town block A","Nov 05, 2019" , null);
-//                DataListOfHistory d3=new DataListOfHistory("Preparing","650","Johar town block A","Nov 05, 2019" , null);
-//                DataListOfHistory d4=new DataListOfHistory("Preparing","650","Johar town block A","Nov 05, 2019" , null);
-//                array.add(d1);
-//                array.add(d2);
-//                array.add(d3);
-//                array.add(d4);
     }
 
 
     private void DisplayOrders(final String number) {
-        
-        History_Array.clear();
+
         myDatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(number).child("Order");
 
         myDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                final ArrayList<DataListOfHistory> Array = new ArrayList<>();
 
+                History_Array.clear();
                 try {
 
                     for (DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()) {
@@ -125,37 +116,19 @@ public class fragment_order extends Fragment {
 
                                     if (!(Status.equals("Delivered") || Status.equals("Cancelled"))) {
 
-
                                         History_CartItems = dataSnapshot.child("cartItems").getValue(genericTypeIndicator);
 
                                         String Address = Objects.requireNonNull(dataSnapshot.child("Address").getValue()).toString();
-
                                         DataListOfHistory temp = new DataListOfHistory(Status, Address, History_CartItems);
 
-//                                        Array.add(temp);
                                         History_Array.add(temp);
 
-                                        settingTheRecyclerView(History_Array);
-
-//                                        int Bill = History_Array.get(0).getBill();
-//
-//                                        if (Bill > 10) {
-//                                            Toast.makeText(getActivity(), "Small", Toast.LENGTH_LONG).show();
-//                                            settingTheRecyclerView(History_Array);
-//                                        }
-//
-//                                        if(History_Array!= null){
-//                                            for (int i=0; i< History_Array.size(); i++){
-//                                                String Name = History_Array.get(i).getStatus();
-//                                                Toast.makeText(getContext() , Name, Toast.LENGTH_LONG).show();
-//
-//                                            }
-//                                        }
-
+//                                        settingTheRecyclerView(History_Array);
                                     }
                                 } catch (Exception a) {
                                     Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
                                 }
+                                settingTheRecyclerView(History_Array);
                             }
 
                             @Override
@@ -163,28 +136,11 @@ public class fragment_order extends Fragment {
 
                             }
                         });
-
-
-//                        for(DataSnapshot object : uniqueKeySnapshot.getChildren()){
-//                            String key = object.getValue().toString();
-//                //                        myDatabaseReference.child(Objects.requireNonNull(key)).child("Address");
-//
-//                            Toast.makeText(getContext(), key , Toast.LENGTH_LONG).show();
-////
-////                            String Address = uniqueKeySnapshot.child(key).getValue().toString();
-////
-////                            String Status = uniqueKeySnapshot.child(key).child("Address").getValue().toString();
-//                        }
-
                     }
-
                 } catch (Exception a) {
                     Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
                 }
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -192,9 +148,12 @@ public class fragment_order extends Fragment {
         });
     }
 
+
+
     @Override
     public void onStop() {
         super.onStop();
+        History_Array.clear();
 //      myAdaptor.stopListening();
 
     }

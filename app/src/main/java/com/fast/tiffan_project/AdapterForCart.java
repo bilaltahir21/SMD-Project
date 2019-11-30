@@ -24,7 +24,6 @@ public class AdapterForCart  extends RecyclerView.Adapter<AdapterForCart.MyViewH
     private ArrayList<DataListForCart> Array;
     CartItems MyCart = CartItems.get_Instance();
     Context context;
-    DatabaseReference myDatabaseReference;
 
     public AdapterForCart(ArrayList<DataListForCart> Array, Context context)
     {
