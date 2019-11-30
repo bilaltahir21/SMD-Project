@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,33 +25,31 @@ public class DialogActivity extends DialogFragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        View view=inflater.inflate(R.layout.message,container,false);
-        town=view.findViewById(R.id.town);
-        city=view.findViewById(R.id.city);
-        street=view.findViewById(R.id.street);
-        house=view.findViewById(R.id.house);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.message, container, false);
+        town = view.findViewById(R.id.town);
+        city = view.findViewById(R.id.city);
+        street = view.findViewById(R.id.street);
+        house = view.findViewById(R.id.house);
 
         Button bSaveAction = view.findViewById(R.id.actionSave);
         bSaveAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Save if fields are not empty
-                if(TextUtils.isEmpty(town.getText())){
+                if (TextUtils.isEmpty(town.getText())) {
                     town.setError("Town is required!");
-                }else if (TextUtils.isEmpty(city.getText())){
+                } else if (TextUtils.isEmpty(city.getText())) {
                     city.setError("City is required!");
-                }
-                else if (TextUtils.isEmpty(street.getText())){
+                } else if (TextUtils.isEmpty(street.getText())) {
                     street.setError("Street is required!");
-                }else if (TextUtils.isEmpty(house.getText())){
+                } else if (TextUtils.isEmpty(house.getText())) {
                     house.setError("House is required!");
-                }
-                else {
+                } else {
                     //Updating data in firebase
                     SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
                     String phone = prefs.getString("phone", "notsaved");//"No name defined" is the default value.
-                    if(!phone.equals("notsaved")){
+                    if (!phone.equals("notsaved")) {
                         DatabaseReference myDatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(phone).child("Address");
                         myDatabaseReference.child("Town").setValue(town.getText().toString());
                         myDatabaseReference.child("City").setValue(city.getText().toString());
@@ -72,7 +69,6 @@ public class DialogActivity extends DialogFragment {
                 getDialog().dismiss();
             }
         });
-
 
 
         return view;

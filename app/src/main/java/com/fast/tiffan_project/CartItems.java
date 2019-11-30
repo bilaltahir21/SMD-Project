@@ -1,4 +1,5 @@
 package com.fast.tiffan_project;
+
 import java.util.ArrayList;
 
 public class CartItems {
@@ -13,7 +14,6 @@ public class CartItems {
     }
 
 
-
     public static CartItems get_Instance() {
         if (single_instance == null)
             single_instance = new CartItems();
@@ -25,19 +25,19 @@ public class CartItems {
         return CartItems;
     }
 
-    boolean consists(DataListForCart item){
-        for(int i = CartItems.size()-1; i>=0; i--){
-            if(CartItems.get(i).itemName.equals(item.itemName)){
+    boolean consists(DataListForCart item) {
+        for (int i = CartItems.size() - 1; i >= 0; i--) {
+            if (CartItems.get(i).itemName.equals(item.itemName)) {
                 return true;
             }
         }
         return false;
     }
 
-    private int index(DataListForCart item){
+    private int index(DataListForCart item) {
         int index = -1;
-        for(int i = CartItems.size()-1; i>=0; i--){
-            if(CartItems.get(i).itemName.equals(item.itemName)){
+        for (int i = CartItems.size() - 1; i >= 0; i--) {
+            if (CartItems.get(i).itemName.equals(item.itemName)) {
                 index = i;
                 return index;
             }
@@ -45,26 +45,24 @@ public class CartItems {
         return index;
     }
 
-    public void removeFromCart(DataListForCart item){
-        if(CartItems.this.consists(item)){
+    public void removeFromCart(DataListForCart item) {
+        if (CartItems.this.consists(item)) {
             int indexOf = CartItems.this.index(item);
             CartItems.remove(indexOf);
             CartItems.notifyAll();
         }
     }
 
-    public void addToCart(DataListForCart item){
-        if(CartItems.this.consists(item)){
+    public void addToCart(DataListForCart item) {
+        if (CartItems.this.consists(item)) {
             int indexOf = CartItems.this.index(item);
             int quantity = CartItems.get(indexOf).getQuantity() + 1;
             CartItems.get(indexOf).setQuantity(quantity);
-        }
-        else CartItems.add(item);
+        } else CartItems.add(item);
     }
 
 
-
-    public void EmptyCart(){
+    public void EmptyCart() {
         CartItems.clear();
     }
 
@@ -73,7 +71,7 @@ public class CartItems {
     }
 
     public void decreaseQuantity(DataListForCart item) {
-        if(CartItems.this.consists(item)){
+        if (CartItems.this.consists(item)) {
             int indexOf = CartItems.this.index(item);
             int quantity = CartItems.get(indexOf).getQuantity() - 1;
             CartItems.get(indexOf).setQuantity(quantity);
@@ -81,7 +79,7 @@ public class CartItems {
     }
 
     public void increseQuantity(DataListForCart item) {
-        if(CartItems.this.consists(item)){
+        if (CartItems.this.consists(item)) {
             int indexOf = CartItems.this.index(item);
             int quantity = CartItems.get(indexOf).getQuantity() + 1;
             CartItems.get(indexOf).setQuantity(quantity);

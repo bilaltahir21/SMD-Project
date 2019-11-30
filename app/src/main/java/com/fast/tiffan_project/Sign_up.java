@@ -1,8 +1,5 @@
 package com.fast.tiffan_project;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,12 +39,12 @@ import java.util.concurrent.TimeUnit;
 public class Sign_up extends AppCompatActivity {
 
 
-    EditText firstName,lastName,phoneNumber,Password,confirmPassword,verificationCode;
-    Button SignUp,Verify;
+    EditText firstName, lastName, phoneNumber, Password, confirmPassword, verificationCode;
+    Button SignUp, Verify;
     TextView loginPage;
-    RadioButton male,female;
+    RadioButton male, female;
 
-    LinearLayout verfication_layout,signup_layout;
+    LinearLayout verfication_layout, signup_layout;
     DatabaseReference myDatabaseReference;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
     private FirebaseAuth mAuth;
@@ -55,11 +55,10 @@ public class Sign_up extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(!isNetworkAvailable()){
-            Toast.makeText(getApplicationContext() , "NETWORK NOT AVAILABLE!" , Toast.LENGTH_LONG);
+        if (!isNetworkAvailable()) {
+            Toast.makeText(getApplicationContext(), "NETWORK NOT AVAILABLE!", Toast.LENGTH_LONG);
             setContentView(R.layout.no_internet);
-        }
-        else {
+        } else {
 
             setContentView(R.layout.activity_sign_up);
             myDatabaseReference = FirebaseDatabase.getInstance().getReference();
@@ -79,10 +78,8 @@ public class Sign_up extends AppCompatActivity {
                     if (VerifyInputs()) {
                         if (isNetworkAvailable()) {
                             sendVerificationCode();
-                        }
-                        else
-                        {
-                            Toast toast = Toast.makeText(getApplicationContext() , "No Internet Connection", Toast.LENGTH_LONG);
+                        } else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG);
                             toast.show();
                         }
 
@@ -129,40 +126,26 @@ public class Sign_up extends AppCompatActivity {
         }
     }
 
-    private boolean VerifyInputs()
-    {
-        if((TextUtils.isEmpty(firstName.getText().toString())))
-        {
+    private boolean VerifyInputs() {
+        if ((TextUtils.isEmpty(firstName.getText().toString()))) {
             Toast.makeText(this, "Enter First Name", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else if((TextUtils.isEmpty(lastName.getText().toString())))
-        {
+        } else if ((TextUtils.isEmpty(lastName.getText().toString()))) {
             Toast.makeText(this, "Enter Last Name", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else if((TextUtils.isEmpty(phoneNumber.getText().toString())))
-        {
+        } else if ((TextUtils.isEmpty(phoneNumber.getText().toString()))) {
             Toast.makeText(this, "Enter Phone Number", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else if((TextUtils.isEmpty(Password.getText().toString())))
-        {
+        } else if ((TextUtils.isEmpty(Password.getText().toString()))) {
             Toast.makeText(this, "Enter Password", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else if((TextUtils.isEmpty(confirmPassword.getText().toString())))
-        {
+        } else if ((TextUtils.isEmpty(confirmPassword.getText().toString()))) {
             Toast.makeText(this, "Enter Confirm Password", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else if(!(Password.getText().toString().equals(confirmPassword.getText().toString())))
-        {
+        } else if (!(Password.getText().toString().equals(confirmPassword.getText().toString()))) {
             Toast.makeText(this, "Passwords does not match", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else if(Password.getText().toString().length()<5)
-        {
+        } else if (Password.getText().toString().length() < 5) {
             Toast.makeText(this, "Enter Atleast 6 Digit Password", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -176,12 +159,9 @@ public class Sign_up extends AppCompatActivity {
 
         String verification_Code = verificationCode.getText().toString();
 
-        if (TextUtils.isEmpty(verification_Code))
-        {
+        if (TextUtils.isEmpty(verification_Code)) {
             Toast.makeText(Sign_up.this, "Please write verification code first...", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
+        } else {
             loadingBar.setTitle("Verification Code");
             loadingBar.setMessage("Please wait, while we are verifying verification code...");
             loadingBar.setCanceledOnTouchOutside(false);
@@ -194,8 +174,7 @@ public class Sign_up extends AppCompatActivity {
 
     }
 
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential)
-    {
+    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -209,8 +188,7 @@ public class Sign_up extends AppCompatActivity {
                                     if (snapshot.hasChild(phoneNumber.getText().toString())) {
                                         Toast.makeText(Sign_up.this, "Account Already Exists!", Toast.LENGTH_SHORT).show();
                                         sendUserToLoginActivity();
-                                    }
-                                    else {
+                                    } else {
 
                                         myDatabaseReference.child("Users").child(phoneNumber.getText().toString()).child("First Name")
                                                 .setValue(firstName.getText().toString());
@@ -220,13 +198,11 @@ public class Sign_up extends AppCompatActivity {
                                                 .setValue(Password.getText().toString());
                                         loadingBar.dismiss();
 
-                                        if(male.isChecked())
-                                        {
+                                        if (male.isChecked()) {
                                             myDatabaseReference.child("Users").child(phoneNumber.getText().toString()).child("Gender")
                                                     .setValue("Male");
 
-                                        }
-                                        else {
+                                        } else {
                                             myDatabaseReference.child("Users").child(phoneNumber.getText().toString()).child("Gender")
                                                     .setValue("Female");
                                         }
@@ -243,9 +219,9 @@ public class Sign_up extends AppCompatActivity {
                                         Toast.makeText(Sign_up.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
                                         // Toast.makeText(Sign_up.this, "Congratulations, you're logged in Successfully.", Toast.LENGTH_SHORT).show();
                                         Intent returnIntent = new Intent();
-                                        returnIntent.putExtra("phone",phoneNumber.getText().toString());
-                                        returnIntent.putExtra("password",Password.getText().toString());
-                                        setResult(Sign_up.RESULT_OK,returnIntent);
+                                        returnIntent.putExtra("phone", phoneNumber.getText().toString());
+                                        returnIntent.putExtra("password", Password.getText().toString());
+                                        setResult(Sign_up.RESULT_OK, returnIntent);
                                         finish();
                                     }
                                 }
@@ -255,23 +231,17 @@ public class Sign_up extends AppCompatActivity {
 
                                 }
                             });
-                        }
-                        else {
-                            if(!isNetworkAvailable())
-                            {
-                                Toast.makeText(Sign_up.this, "Please Check Your Internet Connection" , Toast.LENGTH_LONG).show();
+                        } else {
+                            if (!isNetworkAvailable()) {
+                                Toast.makeText(Sign_up.this, "Please Check Your Internet Connection", Toast.LENGTH_LONG).show();
                                 loadingBar.dismiss();
-                            }
-
-                            else {
+                            } else {
 
                                 String message = task.getException().toString();
-                                if (task.getException() instanceof FirebaseAuthInvalidCredentialsException){
+                                if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                     Toast.makeText(Sign_up.this, "Wrong Verification Code Entered! " + message, Toast.LENGTH_LONG).show();
                                     loadingBar.dismiss();
-                                }
-
-                                else {
+                                } else {
                                     Toast.makeText(Sign_up.this, "Error: " + message, Toast.LENGTH_LONG).show();
                                     loadingBar.dismiss();
                                 }
@@ -281,7 +251,6 @@ public class Sign_up extends AppCompatActivity {
                     }
                 });
     }
-
 
 
     private void SendUserToRestaurant() {
@@ -312,17 +281,17 @@ public class Sign_up extends AppCompatActivity {
     }
 
     private void initializeVariables() {
-        Verify=findViewById(R.id.btn_verify);
-        verificationCode=findViewById(R.id.edt_verficationCode);
-        firstName=findViewById(R.id.edt_firstname);
-        lastName=findViewById(R.id.edt_lastName);
-        phoneNumber=findViewById(R.id.edt_phoneNumber);
-        Password=findViewById(R.id.edt_password);
-        confirmPassword=findViewById(R.id.edt_confirmPassword);
-        SignUp=findViewById(R.id.btn_signUp);
-        loginPage=findViewById(R.id.link_LogIn);
-        male=findViewById(R.id.rb_male);
-        female=findViewById(R.id.rb_female);
+        Verify = findViewById(R.id.btn_verify);
+        verificationCode = findViewById(R.id.edt_verficationCode);
+        firstName = findViewById(R.id.edt_firstname);
+        lastName = findViewById(R.id.edt_lastName);
+        phoneNumber = findViewById(R.id.edt_phoneNumber);
+        Password = findViewById(R.id.edt_password);
+        confirmPassword = findViewById(R.id.edt_confirmPassword);
+        SignUp = findViewById(R.id.btn_signUp);
+        loginPage = findViewById(R.id.link_LogIn);
+        male = findViewById(R.id.rb_male);
+        female = findViewById(R.id.rb_female);
         loadingBar = new ProgressDialog(this);
 
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -37,12 +36,11 @@
                 android:src="@drawable/logo" />
 
 
-
             <LinearLayout
+                android:id="@+id/layout_signUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/layout_signUp"
                 android:visibility="visible">
 
                 <!--  First Name -->
@@ -60,21 +58,20 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <!--  Last Name -->
-                    <com.google.android.material.textfield.TextInputLayout
+                <!--  Last Name -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edt_lastName"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/last_name"
-                            android:id="@+id/edt_lastName"
-                            android:inputType="text" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-    <!--            </FrameLayout>-->
-
+                <!--            </FrameLayout>-->
 
 
                 <!--  Email Label -->
@@ -83,10 +80,10 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edt_phoneNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/contact_923212345678"
-                        android:id="@+id/edt_phoneNumber" />
+                        android:hint="@string/contact_923212345678" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +132,7 @@
 
                 </RadioGroup>
 
-    <!--            <android.support.v7.widget.AppCompatButton-->
+                <!--            <android.support.v7.widget.AppCompatButton-->
 
 
                 <com.google.android.material.button.MaterialButton
@@ -151,12 +148,12 @@
                     android:id="@+id/link_LogIn"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:clickable="true"
-                    android:padding="@dimen/_10sdp"
                     android:focusable="true"
-                    android:textColor="#000FFF"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
                     android:text="@string/already_have_an_account_log_in"
+                    android:textColor="#000FFF"
                     android:textSize="13sp" />
 
 
@@ -185,37 +182,36 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:id="@+id/btn_verify"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/btn_background"
                     android:padding="12dp"
                     android:text="Verify Code" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:gravity="center"
-                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
                     android:text="Didn't receive Verification Code!"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
                     android:textSize="15sp" />
 
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:id="@+id/link_resendCode"
-                    android:padding="@dimen/_10sdp"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:textColor="#000FFF"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
                     android:text="@string/click_here_for_another_code"
+                    android:textColor="#000FFF"
                     android:textSize="13sp" />
-
 
 
             </LinearLayout>
@@ -224,8 +220,6 @@
         </LinearLayout>
 
     </ScrollView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

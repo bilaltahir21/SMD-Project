@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,13 +27,13 @@ public class fragment_profile extends Fragment {
 
     private DatabaseReference myDatabaseReference;
 
-    private TextView name, phone, address, town, city , house_num , street;
-    private String mAddress=null;
+    private TextView name, phone, address, town, city, house_num, street;
+    private String mAddress = null;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_profile , null);
+        View view = inflater.inflate(R.layout.fragment_profile, null);
 
         initialize_Variables(view);
 
@@ -59,7 +57,7 @@ public class fragment_profile extends Fragment {
         change_Address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogActivity alert=new DialogActivity();
+                DialogActivity alert = new DialogActivity();
                 alert.show(getFragmentManager(), "PopUp");
                 //Crashlytics.getInstance().crash(); // Force a crash
             }
@@ -76,13 +74,11 @@ public class fragment_profile extends Fragment {
         SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
         String phone = prefs.getString("phone", "notsaved");//"No name defined" is the default value.
 
-        if(!phone.equals("notsaved")){
+        if (!phone.equals("notsaved")) {
             DisplayUserData(phone);
         }
         return view;
     }
-
-
 
 
     private void DisplayUserData(final String number) {
@@ -108,7 +104,7 @@ public class fragment_profile extends Fragment {
                     addressSingleton.setmHouse(txt_house);
                     addressSingleton.setmAddress(txt_address);
 
-                    mAddress=txt_address;
+                    mAddress = txt_address;
 
                     name.setAllCaps(true);
                     name.setText(txt_name);
@@ -118,10 +114,8 @@ public class fragment_profile extends Fragment {
                     house_num.setText(txt_house);
                     street.setText(txt_street);
                     address.setText(txt_address);
-                }
-                catch (Exception a)
-                {
-                    Toast.makeText(getContext() , a.toString(), Toast.LENGTH_LONG).show();
+                } catch (Exception a) {
+                    // Toast.makeText(getContext() , a.toString(), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -139,7 +133,7 @@ public class fragment_profile extends Fragment {
         address = view.findViewById(R.id.txt_address);
         city = view.findViewById(R.id.txt_city);
         town = view.findViewById(R.id.txt_town);
-        street=view.findViewById(R.id.txt_streetNum);
+        street = view.findViewById(R.id.txt_streetNum);
         house_num = view.findViewById(R.id.txt_houseNum);
     }
 

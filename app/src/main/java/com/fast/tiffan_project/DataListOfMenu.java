@@ -1,9 +1,10 @@
 package com.fast.tiffan_project;
 
 public class DataListOfMenu {
-    private String URI,cardview1_text,cardview2_text,menu_title,menu_description,price,price_description;
+    private String URI, cardview1_text, cardview2_text, menu_title, menu_description, price, price_description;
 
-    public  DataListOfMenu() { }
+    public DataListOfMenu() {
+    }
 
     public DataListOfMenu(String URI, String cardview1_text, String cardview2_text, String menu_title, String menu_description, String price, String price_description) {
         this.URI = URI;

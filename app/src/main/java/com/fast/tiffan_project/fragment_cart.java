@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +50,7 @@ public class fragment_cart extends Fragment {
 //            FirebaseAuth mAuth = FirebaseAuth.getInstance();
 //            fetchFromDatabase();
         } catch (Exception e) {
-            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }
 
         proceed.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +59,11 @@ public class fragment_cart extends Fragment {
                 if (MyCart.getSize() != 0) {
                     AddressConfirmation addressConfirmation = new AddressConfirmation();
                     addressConfirmation.show(Objects.requireNonNull(getFragmentManager()), "Address Confirmation");
-                    placeOrderFireBase();
+                    AddressSingleton addressSingleton;
+                    addressSingleton = AddressSingleton.get_Instance();
+                    if (addressSingleton.getStatus() == "NOT CHANGED" || addressSingleton.getStatus() == "CHANGED") {
+                        placeOrderFireBase();
+                    }
                 } else {
                     Toast toast = Toast.makeText(getActivity(), "Your Cart is Empty!", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER, 0, 0);
@@ -101,7 +104,7 @@ public class fragment_cart extends Fragment {
             public void onCancelled(@NotNull DatabaseError databaseError) {
             }
         });
-        Toast.makeText(context, rootRef.getKey(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, rootRef.getKey(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
