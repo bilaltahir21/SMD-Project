@@ -14,6 +14,10 @@ public class Order_Data {
         this.Phone = Phone;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     int getBill() {
         int bill = 0;
         for (int i = 0; i < this.History_CartItems.size(); i++) {

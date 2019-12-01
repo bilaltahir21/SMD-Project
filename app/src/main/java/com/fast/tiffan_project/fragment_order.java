@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,8 +31,6 @@ public class fragment_order extends Fragment {
     private static ArrayList<DataListOfHistory> History_Array = new ArrayList<>();
     private DatabaseReference myDatabaseReference;
     private RecyclerView recyclerView;
-    //    private FirebaseRecyclerAdapter adapter;
-    //    private Context context;
     private historyAdaptor myAdaptor;
 
     private GenericTypeIndicator<ArrayList<DataListForCart>> genericTypeIndicator
@@ -51,10 +50,11 @@ public class fragment_order extends Fragment {
         String phone = prefs.getString("phone", "notsaved");//"No name defined" is the default value.
 
         if (!phone.equals("notsaved")) {
-            DisplayOrders(phone);
+            FetchData(phone);
         }
 
         recyclerView = view.findViewById(R.id.history_recyclerView);
+        settingTheRecyclerView();
         // recyclerView.setHasFixedSize(true);
         // this.context = getActivity();
         // recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -66,55 +66,113 @@ public class fragment_order extends Fragment {
         return view;
     }
 
-    private void DisplayOrders(final String number) {
 
+    private void FetchData(final String number) {
         myDatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(number).child("Order");
 
-        myDatabaseReference.addValueEventListener(new ValueEventListener() {
+        myDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                final String key =  dataSnapshot.getKey();
 
                 History_Array.clear();
-                try {
+                myDatabaseReference.child(Objects.requireNonNull(key)).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        try {
 
-                    for (DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()) {
+                            String Status = Objects.requireNonNull(dataSnapshot.child("Status").getValue()).toString();
 
-                        final String key = uniqueKeySnapshot.getKey();
+                            if (!(Status.equals("Delivered") || Status.equals("Cancelled"))) {
 
-                        myDatabaseReference.child(Objects.requireNonNull(key)).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                History_CartItems = dataSnapshot.child("cartItems").getValue(genericTypeIndicator);
 
-                                try {
+                                String Address = Objects.requireNonNull(dataSnapshot.child("Address").getValue()).toString();
+                                DataListOfHistory temp = new DataListOfHistory(key , Status, Address, History_CartItems);
 
-                                    String Status = Objects.requireNonNull(dataSnapshot.child("Status").getValue()).toString();
+                                History_Array.add(temp);
 
-                                    if (!(Status.equals("Delivered") || Status.equals("Cancelled"))) {
-
-                                        History_CartItems = dataSnapshot.child("cartItems").getValue(genericTypeIndicator);
-
-                                        String Address = Objects.requireNonNull(dataSnapshot.child("Address").getValue()).toString();
-                                        DataListOfHistory temp = new DataListOfHistory(Status, Address, History_CartItems);
-
-                                        History_Array.add(temp);
-
-                                        settingTheRecyclerView(History_Array);
-                                    }
-                                } catch (Exception a) {
-                                    // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
-                                }
-//                                settingTheRecyclerView(History_Array);
+                                myAdaptor.notifyDataSetChanged();
                             }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
+                        } catch (Exception a) {
+                            // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
+                        }
                     }
-                } catch (Exception a) {
-                    // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
-                }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                final String key =  dataSnapshot.getKey();
+                
+                myDatabaseReference.child(Objects.requireNonNull(key)).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        try {
+
+                            String Status = Objects.requireNonNull(dataSnapshot.child("Status").getValue()).toString();
+
+                            if (!(Status.equals("Delivered") || Status.equals("Cancelled"))) {
+
+                                History_CartItems = dataSnapshot.child("cartItems").getValue(genericTypeIndicator);
+
+                                DataListOfHistory temp = GetItem(key);
+
+                                temp.setStatus(Status);
+//                                myAdaptor.notifyDataSetChanged();
+                            }
+                            else {
+                                removeItem(key);
+                                myAdaptor.notifyDataSetChanged();
+                            }
+                        } catch (Exception a) {
+                            // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    private void removeItem(String key) {
+                        for(int i=0; i<History_Array.size(); i++){
+                            if(History_Array.get(i).getID().equals(key)){
+                                History_Array.remove(i);
+                                break;
+                            }
+                        }
+
+                    }
+
+                    private DataListOfHistory GetItem(String key) {
+                        DataListOfHistory temp = null;
+
+                        for(int i=0; i<History_Array.size(); i++){
+                            if(History_Array.get(i).getID().equals(key)){
+                                temp =  History_Array.get(i);
+                                myAdaptor.notifyItemChanged(i);
+                                break;
+                            }
+                        }
+                        return temp;
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
             }
 
             @Override
@@ -123,6 +181,65 @@ public class fragment_order extends Fragment {
             }
         });
     }
+
+
+//    private void DisplayOrders(final String number) {
+//
+//        myDatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(number).child("Order");
+//
+//        myDatabaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                History_Array.clear();
+//                try {
+//
+//                    for (DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()) {
+//
+//                        final String key = uniqueKeySnapshot.getKey();
+//
+//                        myDatabaseReference.child(Objects.requireNonNull(key)).addValueEventListener(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                                try {
+//
+//                                    String Status = Objects.requireNonNull(dataSnapshot.child("Status").getValue()).toString();
+//
+//                                    if (!(Status.equals("Delivered") || Status.equals("Cancelled"))) {
+//
+//                                        History_CartItems = dataSnapshot.child("cartItems").getValue(genericTypeIndicator);
+//
+//                                        String Address = Objects.requireNonNull(dataSnapshot.child("Address").getValue()).toString();
+////                                        DataListOfHistory temp = new DataListOfHistory(Status, Address, History_CartItems);
+//
+////                                        History_Array.add(temp);
+//
+//                                        settingTheRecyclerView(History_Array);
+//                                    }
+//                                } catch (Exception a) {
+//                                    // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
+//                                }
+////                                settingTheRecyclerView(History_Array);
+//                            }
+//
+//                            @Override
+//                            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                            }
+//                        });
+//                    }
+//                } catch (Exception a) {
+//                    // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 
 
     @Override
@@ -146,9 +263,9 @@ public class fragment_order extends Fragment {
     }
 
 
-    private void settingTheRecyclerView(ArrayList<DataListOfHistory> Arr) {
+    private void settingTheRecyclerView() {
 
-        myAdaptor = new historyAdaptor(Arr, getActivity());
+        myAdaptor = new historyAdaptor(History_Array, getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(myAdaptor);
     }
