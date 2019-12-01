@@ -22,7 +22,7 @@ import static android.content.Context.MODE_PRIVATE;
 import static com.fast.tiffan_project.MainActivity.SharePrefernce;
 
 public class DialogActivity extends DialogFragment {
-    EditText town, city, street, house;
+    private EditText town, city, street, house;
 
     @Nullable
     @Override

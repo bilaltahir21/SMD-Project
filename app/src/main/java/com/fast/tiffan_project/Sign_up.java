@@ -146,7 +146,7 @@ public class Sign_up extends AppCompatActivity {
             Toast.makeText(this, "Passwords does not match", Toast.LENGTH_SHORT).show();
             return false;
         } else if (Password.getText().toString().length() < 5) {
-            Toast.makeText(this, "Enter Atleast 6 Digit Password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter At-least 6 Digit Password", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -268,7 +268,6 @@ public class Sign_up extends AppCompatActivity {
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
-
         PhoneAuthProvider.getInstance().verifyPhoneNumber(phone_Number, 60, TimeUnit.SECONDS, Sign_up.this, callbacks);
 
     }
@@ -306,5 +305,4 @@ public class Sign_up extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
 }

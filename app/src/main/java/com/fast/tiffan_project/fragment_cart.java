@@ -1,8 +1,6 @@
 package com.fast.tiffan_project;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -15,8 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -62,16 +58,16 @@ public class fragment_cart extends Fragment {
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String isAddress="0";
+                String isAddress = "0";
                 SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
                 isAddress = prefs.getString("isAddress", "0");//"No name defined" is the default value.
-                if (isAddress=="1") {
+                if (isAddress.equals("1")) {
                     if (MyCart.getSize() != 0) {
                         AddressConfirmation addressConfirmation = new AddressConfirmation();
                         addressConfirmation.show(Objects.requireNonNull(getFragmentManager()), "Address Confirmation");
                         AddressSingleton addressSingleton;
                         addressSingleton = AddressSingleton.get_Instance();
-                        if (addressSingleton.getStatus() == "NOT CHANGED" || addressSingleton.getStatus() == "CHANGED") {
+                        if ((addressSingleton.getStatus() == "NOT CHANGED" || addressSingleton.getStatus() == "CHANGED") && addressSingleton.getStatus()!=null) {
                             placeOrderFireBase();
                         }
                     } else {
@@ -79,12 +75,12 @@ public class fragment_cart extends Fragment {
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
-                }else {
+                } else {
                     Toast toast = Toast.makeText(getActivity(), "Set address first!", Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
 
-                    ViewPager viewPager=getActivity().findViewById(R.id.fragment_container);
+                    ViewPager viewPager = getActivity().findViewById(R.id.fragment_container);
                     viewPager.setCurrentItem(2);
                 }
             }
@@ -102,6 +98,7 @@ public class fragment_cart extends Fragment {
             myDatabaseReference.child("Status").setValue("Pending");
 
             AddressSingleton addressSingleton = AddressSingleton.get_Instance();
+            addressSingleton.setStatus(null);
             String address = addressSingleton.getmAddress();
             myDatabaseReference.child("Address").setValue(address);
             MyCart.EmptyCart();

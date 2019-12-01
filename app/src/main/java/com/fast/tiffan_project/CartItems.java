@@ -4,9 +4,8 @@ import java.util.ArrayList;
 
 public class CartItems {
 
-    private ArrayList<DataListForCart> CartItems;
-
     private static CartItems single_instance = null;
+    private ArrayList<DataListForCart> CartItems;
 
     private CartItems() {
 

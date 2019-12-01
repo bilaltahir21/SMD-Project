@@ -30,13 +30,10 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
 
 
+    final static String SharePrefernce = "MySharedPreference";
     EditText PhoneNumber, VerificationCode, password;
     Button LoginButton, VerifyButton;
     TextView SignUp;
-
-    final static String SharePrefernce = "MySharedPreference";
-
-
     DatabaseReference myDatabaseReference;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
     private FirebaseAuth mAuth;

@@ -1,2 +1,2 @@
-include ':app', ':manager'
+include ':app', ':manager', ':database'
 rootProject.name='tiffan_Project'

@@ -27,15 +27,16 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class fragment_order extends Fragment {
 
-    private DatabaseReference myDatabaseReference;
     private static ArrayList<DataListOfHistory> History_Array = new ArrayList<>();
+    private DatabaseReference myDatabaseReference;
     private RecyclerView recyclerView;
     //    private FirebaseRecyclerAdapter adapter;
     //    private Context context;
     private historyAdaptor myAdaptor;
 
     private GenericTypeIndicator<ArrayList<DataListForCart>> genericTypeIndicator
-            = new GenericTypeIndicator<ArrayList<DataListForCart>>() {};
+            = new GenericTypeIndicator<ArrayList<DataListForCart>>() {
+    };
 
     private ArrayList<DataListForCart> History_CartItems = new ArrayList<>();
 
@@ -43,7 +44,7 @@ public class fragment_order extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_order, container,false);
+        View view = inflater.inflate(R.layout.fragment_order, container, false);
 
 //        History_Array = null;
         SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
@@ -115,6 +116,7 @@ public class fragment_order extends Fragment {
                     // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

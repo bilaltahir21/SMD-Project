@@ -11,16 +11,15 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.database.DatabaseReference;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 public class AdapterForCart extends RecyclerView.Adapter<AdapterForCart.MyViewHolder> {
-    private ArrayList<DataListForCart> Array;
     CartItems MyCart = CartItems.get_Instance();
     Context context;
+    private ArrayList<DataListForCart> Array;
 
     public AdapterForCart(ArrayList<DataListForCart> Array, Context context) {
         this.Array = Array;
@@ -39,11 +38,8 @@ public class AdapterForCart extends RecyclerView.Adapter<AdapterForCart.MyViewHo
     public void onBindViewHolder(@NotNull final AdapterForCart.MyViewHolder holder, final int position) {
         if (Array != null) {
             final DataListForCart Value = Array.get(position);
-            // downnload and set image
-
+            // Download and set image
             // ImageView in your Activity
-
-
             Glide.with(context /* context */)
                     .load(Value.getURI())
                     .into(holder.image);
@@ -51,7 +47,6 @@ public class AdapterForCart extends RecyclerView.Adapter<AdapterForCart.MyViewHo
             holder.itemName.setText(Value.getItemName());
             holder.unitPrice.setText(Value.getUnitPrice());
             holder.quantity.setText(String.valueOf(Value.getQuantity()));
-
 
             holder.increaseQuanity.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,7 +101,6 @@ public class AdapterForCart extends RecyclerView.Adapter<AdapterForCart.MyViewHo
         TextView itemName, unitPrice, quantity;
         ImageView increaseQuanity, decreaseQuantity, removeItem;
         Button proceed;
-
 
         public MyViewHolder(View itemView) {
             super(itemView);

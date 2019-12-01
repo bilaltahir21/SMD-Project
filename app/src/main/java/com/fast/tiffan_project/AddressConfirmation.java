@@ -16,10 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddressConfirmation extends DialogFragment {
-    TextView address;
-    Button btnChange, btnProceed;
-    DatabaseReference myDatabaseReference;
-    FirebaseAuth mAuth;
+    private TextView address;
+    private Button btnChange, btnProceed;
+    private DatabaseReference myDatabaseReference;
+    private FirebaseAuth mAuth;
 
     @Nullable
     @Override

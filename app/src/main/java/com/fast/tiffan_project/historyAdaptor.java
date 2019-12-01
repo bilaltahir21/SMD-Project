@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import static java.lang.String.valueOf;
 
 public class historyAdaptor extends RecyclerView.Adapter<historyAdaptor.MyViewHolder> {
-    private ArrayList<DataListOfHistory> Array;
     Context context;
+    private ArrayList<DataListOfHistory> Array;
 
     historyAdaptor(ArrayList<DataListOfHistory> Array, Context context) {
         this.context = context;

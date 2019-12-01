@@ -24,6 +24,7 @@ public class AddressSingleton {
         txt_street = null;
         txt_house = null;
         txt_address = null;
+        txt_status = null;
     }
 
     public static AddressSingleton get_Instance() {
