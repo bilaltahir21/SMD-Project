@@ -63,7 +63,7 @@ public class fragment_menu extends Fragment {
     }
 
     private void fetch() {
-        Query query = FirebaseDatabase.getInstance().getReference().child("Menu");
+        Query query = FirebaseDatabase.getInstance().getReference().child("Menu").orderByChild("show").equalTo("Yes");
         FirebaseRecyclerOptions<DataListOfMenu> options = new FirebaseRecyclerOptions.Builder<DataListOfMenu>()
                 .setQuery(query, new SnapshotParser<DataListOfMenu>() {
                     @NonNull

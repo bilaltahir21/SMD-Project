@@ -1,12 +1,12 @@
 package com.tiffin.manager;
 
 public class DataListOfMenu {
-    private String URI, cardview1_text, cardview2_text, menu_title, menu_description, price, price_description;
+    private String URI, cardview1_text, cardview2_text, menu_title, menu_description, price, price_description, show;
 
     public DataListOfMenu() {
     }
 
-    public DataListOfMenu(String URI, String cardview1_text, String cardview2_text, String menu_title, String menu_description, String price, String price_description) {
+    public DataListOfMenu(String URI, String cardview1_text, String cardview2_text, String menu_title, String menu_description, String price, String price_description, String show) {
         this.URI = URI;
         this.cardview1_text = cardview1_text;
         this.cardview2_text = cardview2_text;
@@ -14,6 +14,7 @@ public class DataListOfMenu {
         this.menu_description = menu_description;
         this.price = price;
         this.price_description = price_description;
+        this.show = show;
     }
 
     public String getURI() {
@@ -70,5 +71,13 @@ public class DataListOfMenu {
 
     public void setPrice_description(String price_description) {
         this.price_description = price_description;
+    }
+
+    public String getShow() {
+        return show;
+    }
+
+    public void setShow(String show) {
+        this.show = show;
     }
 }

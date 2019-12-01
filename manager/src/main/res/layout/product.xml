@@ -149,10 +149,11 @@
             android:layout_below="@id/txt_SEO" />
 
         <Button
-            android:id="@+id/btn_addToCart"
+            android:id="@+id/btn_Hide_Show"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:textSize="@dimen/_10sdp"
+            android:textColor="#FFFFFF"
             android:backgroundTint="@color/btn_color"
             android:layout_marginStart="@dimen/_10sdp"
             android:textAllCaps="true"
