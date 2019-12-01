@@ -16,6 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,6 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tiffin.manager.ui.main.SectionsPagerAdapter;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,10 +54,41 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-
-//        Notification();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference();
+        reference.child("Order")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Notify();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
     }
+
+
+
+    public void Notify()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "222")
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle("Order")
+                .setContentText("A new Order have been added in the Queue.")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);//notificationId is a unique int for each notification that you must define
+        notificationManager.notify(101, mBuilder.build());
+
+    }
+
 
 
 
@@ -89,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                                     channel.enableLights(true);
                                     channel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
                                     channel.enableVibration(true);
-                                    nm.createNotificationChannel(channel);
+                                    Objects.requireNonNull(nm).createNotificationChannel(channel);
                                 }
 
                                 NotificationCompat.Builder builder =

@@ -55,12 +55,12 @@ public class fragment_order extends Fragment {
         }
 
         recyclerView = view.findViewById(R.id.history_recyclerView);
-        //                recyclerView.setHasFixedSize(true);
-//        this.context = getActivity();
-        //                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        // recyclerView.setHasFixedSize(true);
+        // this.context = getActivity();
+        // recyclerView.setLayoutManager(new LinearLayoutManager(context));
         // set a LinearLayoutManager with default vertical orientation
         //                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        //                recyclerView.setLayoutManager(linearLayoutManager);
+        //  recyclerView.setLayoutManager(linearLayoutManager);
         //                loadhistory();
         //                this.ha=new historyAdaptor(array,context);
         return view;
