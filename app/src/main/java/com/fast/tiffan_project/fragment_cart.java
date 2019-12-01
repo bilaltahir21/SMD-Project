@@ -1,6 +1,8 @@
 package com.fast.tiffan_project;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.fast.tiffan_project.MainActivity.SharePrefernce;
 
 public class fragment_cart extends Fragment {
 
@@ -56,18 +61,32 @@ public class fragment_cart extends Fragment {
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MyCart.getSize() != 0) {
-                    AddressConfirmation addressConfirmation = new AddressConfirmation();
-                    addressConfirmation.show(Objects.requireNonNull(getFragmentManager()), "Address Confirmation");
-                    AddressSingleton addressSingleton;
-                    addressSingleton = AddressSingleton.get_Instance();
-                    if (addressSingleton.getStatus() == "NOT CHANGED" || addressSingleton.getStatus() == "CHANGED") {
-                        placeOrderFireBase();
+                String isAddress="0";
+                @SuppressLint("CommitPrefEdits") SharedPreferences editor = (SharedPreferences) Objects.requireNonNull(getActivity()).getSharedPreferences(SharePrefernce, MODE_PRIVATE).edit();
+                editor.getString("isAddress", isAddress);
+                if (isAddress=="1") {
+                    if (MyCart.getSize() != 0) {
+                        AddressConfirmation addressConfirmation = new AddressConfirmation();
+                        addressConfirmation.show(Objects.requireNonNull(getFragmentManager()), "Address Confirmation");
+                        AddressSingleton addressSingleton;
+                        addressSingleton = AddressSingleton.get_Instance();
+                        if (addressSingleton.getStatus() == "NOT CHANGED" || addressSingleton.getStatus() == "CHANGED") {
+                            placeOrderFireBase();
+                        }
+                    } else {
+                        Toast toast = Toast.makeText(getActivity(), "Your Cart is Empty!", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
                     }
-                } else {
-                    Toast toast = Toast.makeText(getActivity(), "Your Cart is Empty!", Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
+                }else {
+//                    Toast toast = Toast.makeText(getActivity(), "Set address first!", Toast.LENGTH_LONG);
+//                    toast.setGravity(Gravity.CENTER, 0, 0);
+//                    toast.show();
+//                    Fragment fragment = new fragment_profile();
+//                    FragmentManager fragmentManager = getFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+//                    fragmentTransaction.commit();
                 }
             }
         });
@@ -76,7 +95,7 @@ public class fragment_cart extends Fragment {
 
 
     private void placeOrderFireBase() {
-        SharedPreferences prefs = context.getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences(SharePrefernce, MODE_PRIVATE);
         String phone = prefs.getString("phone", "notsaved");//"No name defined" is the default value.
         if (!phone.equals("notsaved")) {
             myDatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(phone).child("Order").push();

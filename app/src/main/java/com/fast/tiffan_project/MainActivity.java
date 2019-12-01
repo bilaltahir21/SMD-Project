@@ -249,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences(SharePrefernce, MODE_PRIVATE).edit();
                 editor.putString("phone", phone);
                 editor.putString("password", pass);
+                editor.putString("isAddress", "0");
                 editor.apply();
 
             }
