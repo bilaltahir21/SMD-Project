@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.fast.tiffan_project.MainActivity.SharePrefernce;
 
 public class DialogActivity extends DialogFragment {
     EditText town, city, street, house;
@@ -47,7 +48,7 @@ public class DialogActivity extends DialogFragment {
                     house.setError("House is required!");
                 } else {
                     //Updating data in firebase
-                    SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
+                    SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(SharePrefernce, MODE_PRIVATE);
                     String phone = prefs.getString("phone", "notsaved");//"No name defined" is the default value.
                     if (!phone.equals("notsaved")) {
                         DatabaseReference myDatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(phone).child("Address");
@@ -56,6 +57,10 @@ public class DialogActivity extends DialogFragment {
                         myDatabaseReference.child("Street").setValue(street.getText().toString());
                         myDatabaseReference.child("House").setValue(house.getText().toString());
                     }
+                    //Setting status that address is changed
+                    SharedPreferences.Editor editor = Objects.requireNonNull(getActivity()).getSharedPreferences(SharePrefernce, MODE_PRIVATE).edit();
+                    editor.putString("isAddress", "1");
+                    editor.apply();
                     //Leaving
                     getDialog().dismiss();
                 }

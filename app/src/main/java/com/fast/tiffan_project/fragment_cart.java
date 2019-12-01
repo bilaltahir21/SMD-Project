@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,7 +47,7 @@ public class fragment_cart extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cart, null);
         try {
             setVariables(view);
@@ -62,8 +63,8 @@ public class fragment_cart extends Fragment {
             @Override
             public void onClick(View v) {
                 String isAddress="0";
-                @SuppressLint("CommitPrefEdits") SharedPreferences editor = (SharedPreferences) Objects.requireNonNull(getActivity()).getSharedPreferences(SharePrefernce, MODE_PRIVATE).edit();
-                editor.getString("isAddress", isAddress);
+                SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
+                isAddress = prefs.getString("isAddress", "0");//"No name defined" is the default value.
                 if (isAddress=="1") {
                     if (MyCart.getSize() != 0) {
                         AddressConfirmation addressConfirmation = new AddressConfirmation();
@@ -79,14 +80,12 @@ public class fragment_cart extends Fragment {
                         toast.show();
                     }
                 }else {
-//                    Toast toast = Toast.makeText(getActivity(), "Set address first!", Toast.LENGTH_LONG);
-//                    toast.setGravity(Gravity.CENTER, 0, 0);
-//                    toast.show();
-//                    Fragment fragment = new fragment_profile();
-//                    FragmentManager fragmentManager = getFragmentManager();
-//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                    fragmentTransaction.replace(R.id.fragment_container, fragment);
-//                    fragmentTransaction.commit();
+                    Toast toast = Toast.makeText(getActivity(), "Set address first!", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+
+                    ViewPager viewPager=getActivity().findViewById(R.id.fragment_container);
+                    viewPager.setCurrentItem(2);
                 }
             }
         });
