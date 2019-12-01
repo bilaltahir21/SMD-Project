@@ -22,7 +22,7 @@ public class Restaurant extends AppCompatActivity {
 
 
     //    private FirebaseAnalytics mFirebaseAnalytics;
-    ViewPager viewpager;
+    public ViewPager viewpager;
     PagerViewAdapter pagerView_adapter;
     private CartItems MyCart = CartItems.get_Instance();
 
@@ -64,18 +64,22 @@ public class Restaurant extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.action_home:
                             viewpager.setCurrentItem(0, false);
+                            viewpager.bringToFront();
                             //Toast.makeText(Restaurant.this, "Home", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.action_orders:
                             viewpager.setCurrentItem(1, false);
+                            viewpager.bringToFront();
                             //Toast.makeText(Restaurant.this, "Orders", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.action_profile:
                             viewpager.setCurrentItem(2, false);
+                            viewpager.bringToFront();
                             //Toast.makeText(Restaurant.this, "Profile", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.action_cart:
                             viewpager.setCurrentItem(3, false);
+                            viewpager.bringToFront();
                             //Toast.makeText(Restaurant.this, "Cart", Toast.LENGTH_SHORT).show();
                             break;
                     }
