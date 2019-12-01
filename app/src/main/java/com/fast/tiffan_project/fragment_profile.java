@@ -44,6 +44,8 @@ public class fragment_profile extends Fragment {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = Objects.requireNonNull(getActivity()).getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE).edit();
+                editor.putString("phone", "");
+                editor.putString("password", "");
                 editor.putString("LogIn", "false");
                 editor.apply();
                 startActivity(new Intent(getContext(), MainActivity.class));
