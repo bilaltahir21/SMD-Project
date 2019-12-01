@@ -96,11 +96,27 @@ public class fragment_cart extends Fragment {
             myDatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(phone).child("Order").push();
             myDatabaseReference.setValue(MyCart);
             myDatabaseReference.child("Status").setValue("Pending");
-
             AddressSingleton addressSingleton = AddressSingleton.get_Instance();
             addressSingleton.setStatus(null);
             String address = addressSingleton.getmAddress();
             myDatabaseReference.child("Address").setValue(address);
+
+
+
+
+            //////// JUST FOR NOW BUT THIS CODE WILL BE REMOVE AFTER SETTING DATABASE (REMOVING ORDERS FROM USERS ///////
+
+            myDatabaseReference = FirebaseDatabase.getInstance().getReference("Order").push();
+            myDatabaseReference.setValue(MyCart);
+            myDatabaseReference.child("Status").setValue("Pending");
+            myDatabaseReference.child("Address").setValue(address);
+            myDatabaseReference.child("User").setValue(phone);
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
             MyCart.EmptyCart();
             adapter.notifyDataSetChanged();
         }
