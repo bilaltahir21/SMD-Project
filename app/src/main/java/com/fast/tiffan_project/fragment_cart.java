@@ -1,5 +1,6 @@
 package com.fast.tiffan_project;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.fast.tiffan_project.MainActivity.SharePrefernce;
@@ -61,13 +62,64 @@ public class fragment_cart extends Fragment {
                 AddressSingleton addr = AddressSingleton.get_Instance();
                 if (!addr.getmCity().equals("City") && !addr.getmTown().equals("Town") && !addr.getmStreet().equals("Street") && !addr.getmHouse().equals("House")) {
                     if (MyCart.getSize() != 0) {
-                        AddressConfirmation addressConfirmation = new AddressConfirmation();
-                        addressConfirmation.show(Objects.requireNonNull(getFragmentManager()), "Address Confirmation");
+                        final Dialog dialog = new Dialog(getActivity());
+                        dialog.setContentView(R.layout.address_confirmation);
+                        dialog.show();
+                        Button button = dialog.findViewById(R.id.nah);
+                        button.setOnClickListener(new View.OnClickListener() {
+                                                      @Override
+                                                      public void onClick(View v) {
+                                                          placeOrderFireBase();
+                                                          dialog.hide();
+                                                      }
+                                                  }
+                        );
+                        Button button1=dialog.findViewById(R.id.change);
+                        button1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                final Dialog change=new Dialog(getActivity());
+                                change.setContentView(R.layout.message);
+                                dialog.hide();
+                                change.show();
+                                final EditText editCity=change.findViewById(R.id.city);
+                                final EditText editTown=change.findViewById(R.id.town);
+                                final EditText editStreet=change.findViewById(R.id.street);
+                                final EditText editHouse=change.findViewById(R.id.house);
+
+                                Button actionSave=change.findViewById(R.id.actionSave);
+                                actionSave.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        AddressSingleton addressSingleton;
+                                        addressSingleton=AddressSingleton.get_Instance();
+                                        addressSingleton.setmCity(editCity.getText().toString());
+                                        addressSingleton.setmTown(editTown.getText().toString());
+                                        addressSingleton.setmStreet(editStreet.getText().toString());
+                                        addressSingleton.setmHouse(editHouse.getText().toString());
+                                        addressSingleton.setmAddress(editCity.getText().toString()+", "+editTown.getText().toString()+", "+editStreet.getText().toString()+", "+editHouse.getText().toString());
+
+                                        placeOrderFireBase();
+                                        change.hide();
+                                    }
+                                });
+
+                                Button actionCancel=change.findViewById(R.id.actionCancel);
+                                actionCancel.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        change.hide();
+                                    }
+                                });
+                            }
+                        });
+//                        AddressConfirmation addressConfirmation = new AddressConfirmation();
+//                        addressConfirmation.show(Objects.requireNonNull(getFragmentManager()), "Address Confirmation");
                         AddressSingleton addressSingleton;
                         addressSingleton = AddressSingleton.get_Instance();
-                        while (addressSingleton.getStatus() != null) {
+                        if (addressSingleton.getStatus() != null) {
                             if (addressSingleton.getStatus() == "NOT CHANGED" || addressSingleton.getStatus() == "CHANGED") {
-                                placeOrderFireBase();
+                                //placeOrderFireBase();
                             }
                         }
                     } else {
@@ -89,7 +141,7 @@ public class fragment_cart extends Fragment {
     }
 
 
-    private void placeOrderFireBase() {
+    public void placeOrderFireBase() {
         SharedPreferences prefs = context.getSharedPreferences(SharePrefernce, MODE_PRIVATE);
         String phone = prefs.getString("phone", "notsaved");//"No name defined" is the default value.
         if (!phone.equals("notsaved")) {

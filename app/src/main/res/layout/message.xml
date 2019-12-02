@@ -158,7 +158,7 @@
                 android:layout_marginRight="@dimen/_3sdp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
-                android:text="Save"
+                android:text="Proceed"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

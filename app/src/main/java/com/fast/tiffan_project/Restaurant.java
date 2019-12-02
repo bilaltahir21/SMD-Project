@@ -45,28 +45,28 @@ public class Restaurant extends AppCompatActivity {
         context = getApplicationContext();
 
         //Retrofit registering
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(RetrofitClient.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        HookService hookService = retrofit.create(HookService.class);
-        Call<Version> hook = hookService.getHook();
-        hook.enqueue(new Callback<Version>() {
-            @Override
-            public void onResponse(Call<Version> call, Response<Version> response) {
-                Version version = response.body();
-                Log.d("A", version.getAppVersion().getAppMetaName());
-                HookRepo hookRepo = new HookRepo(context);
-                hookRepo.insertTask(version.getStatusCode().toString(), version.getAppVersion().getVersion().toString(), version.getAppVersion().getAppMetaName());
-                //Toast.makeText(getApplicationContext(), version.getAppVersion().getAppMetaName(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<Version> call, Throwable t) {
-
-            }
-        });
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(RetrofitClient.BASE_URL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//
+//        HookService hookService = retrofit.create(HookService.class);
+//        Call<Version> hook = hookService.getHook();
+//        hook.enqueue(new Callback<Version>() {
+//            @Override
+//            public void onResponse(Call<Version> call, Response<Version> response) {
+//                Version version = response.body();
+//                Log.d("A", version.getAppVersion().getAppMetaName());
+//                HookRepo hookRepo = new HookRepo(context);
+//                hookRepo.insertTask(version.getStatusCode().toString(), version.getAppVersion().getVersion().toString(), version.getAppVersion().getAppMetaName());
+//                //Toast.makeText(getApplicationContext(), version.getAppVersion().getAppMetaName(), Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Version> call, Throwable t) {
+//
+//            }
+//        });
 
 
         if (!isNetworkAvailable()) {
