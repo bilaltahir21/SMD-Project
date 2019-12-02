@@ -38,6 +38,7 @@ public class AddressConfirmation extends DialogFragment {
             public void onClick(View v) {
                 TemporaryAddress temporaryAddress = new TemporaryAddress();
                 temporaryAddress.show(getFragmentManager(), "PopUp");
+                getDialog().dismiss();
             }
         });
 

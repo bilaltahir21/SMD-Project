@@ -58,10 +58,8 @@ public class fragment_cart extends Fragment {
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String isAddress = "0";
-                SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(MainActivity.SharePrefernce, MODE_PRIVATE);
-                isAddress = prefs.getString("isAddress", "0");//"No name defined" is the default value.
-                if (isAddress.equals("1")) {
+                AddressSingleton addr=AddressSingleton.get_Instance();
+                if (!addr.getmCity().equals("City") && !addr.getmTown().equals("Town") && !addr.getmStreet().equals("Street") && !addr.getmHouse().equals("House")) {
                     if (MyCart.getSize() != 0) {
                         AddressConfirmation addressConfirmation = new AddressConfirmation();
                         addressConfirmation.show(Objects.requireNonNull(getFragmentManager()), "Address Confirmation");
