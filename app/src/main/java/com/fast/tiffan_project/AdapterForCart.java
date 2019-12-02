@@ -17,7 +17,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class AdapterForCart extends RecyclerView.Adapter<AdapterForCart.MyViewHolder> {
-    CartItems MyCart = CartItems.get_Instance();
+
+    private CartItems MyCart = CartItems.get_Instance();
     Context context;
     private ArrayList<DataListForCart> Array;
 

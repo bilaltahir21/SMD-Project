@@ -1,5 +1,6 @@
 package com.fast.tiffan_project;
 
+import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -282,7 +284,7 @@ public class fragment_order extends Fragment {
 
     private void settingTheRecyclerView() {
 
-        myAdaptor = new historyAdaptor(History_Array, getActivity());
+        myAdaptor = new historyAdaptor(History_Array, getActivity() , getFragmentManager());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(myAdaptor);
     }

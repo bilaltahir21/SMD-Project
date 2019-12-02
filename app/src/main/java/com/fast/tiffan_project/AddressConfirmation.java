@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class AddressConfirmation extends DialogFragment {
     private TextView address;
     private Button btnChange, btnProceed;
@@ -37,8 +39,8 @@ public class AddressConfirmation extends DialogFragment {
             @Override
             public void onClick(View v) {
                 TemporaryAddress temporaryAddress = new TemporaryAddress();
-                temporaryAddress.show(getFragmentManager(), "PopUp");
-                getDialog().dismiss();
+                temporaryAddress.show(Objects.requireNonNull(getFragmentManager()), "PopUp");
+                Objects.requireNonNull(getDialog()).dismiss();
             }
         });
 
@@ -48,7 +50,7 @@ public class AddressConfirmation extends DialogFragment {
                 AddressSingleton addressSingleton = AddressSingleton.get_Instance();
                 addressSingleton.setStatus("NOT CHANGED");
                 //Leaving
-                getDialog().dismiss();
+                Objects.requireNonNull(getDialog()).dismiss();
             }
         });
 

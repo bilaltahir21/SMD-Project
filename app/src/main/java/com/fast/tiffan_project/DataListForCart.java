@@ -17,6 +17,17 @@ public class DataListForCart {
         Quantity = 1;
     }
 
+
+    String getBill() {
+
+        int discountPrice = ((Integer.parseInt(UnitPrice) * this.Quantity) *  this.Discount) / 100;
+        int bill = (Integer.parseInt(UnitPrice) * this.Quantity) - discountPrice;
+
+        String Price = Integer.toString(bill);
+
+        return Price;
+    }
+
     public int getDiscount() {
         return Discount;
     }

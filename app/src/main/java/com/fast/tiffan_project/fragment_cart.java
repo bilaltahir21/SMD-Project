@@ -58,7 +58,7 @@ public class fragment_cart extends Fragment {
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddressSingleton addr=AddressSingleton.get_Instance();
+                AddressSingleton addr = AddressSingleton.get_Instance();
                 if (!addr.getmCity().equals("City") && !addr.getmTown().equals("Town") && !addr.getmStreet().equals("Street") && !addr.getmHouse().equals("House")) {
                     if (MyCart.getSize() != 0) {
                         AddressConfirmation addressConfirmation = new AddressConfirmation();

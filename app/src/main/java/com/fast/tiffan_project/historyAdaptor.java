@@ -1,18 +1,22 @@
 package com.fast.tiffan_project;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static java.lang.String.valueOf;
 
@@ -20,17 +24,18 @@ public class historyAdaptor extends RecyclerView.Adapter<historyAdaptor.MyViewHo
     Context context;
     private ArrayList<DataListOfHistory> Array;
 
-    historyAdaptor(ArrayList<DataListOfHistory> Array, Context context) {
+    private FragmentManager Manager;
+
+    historyAdaptor(ArrayList<DataListOfHistory> Array, Context context , FragmentManager Manager) {
         this.context = context;
         this.Array = Array;
+        this.Manager = Manager;
     }
 
     @NotNull
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // infalte the item Layout
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.history, parent, false);
-        // set the view's size, margins, paddings and layout parameters
         return new MyViewHolder(view);
     }
 
@@ -42,15 +47,25 @@ public class historyAdaptor extends RecyclerView.Adapter<historyAdaptor.MyViewHo
         holder.status.setText(value.getStatus());
         holder.bill.setText(valueOf(value.getBill()));
         holder.address.setText(value.getAddress());
-//        holder.date.setText(c.getDate());
-
-        // implement setOnClickListener event on item view.
+//      holder.date.setText(c.getDate());
+//      implement setOnClickListener event on item view.
 
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // display a toast with person name on item click
-//                callnext(position);
+
+                ArrayList<DataListForCart> temp = value.getHistory_CartItems();
+                DisplayDetails dialog = new DisplayDetails(temp);
+
+                try {
+//                    dialog.show(Manager , "Dialog Box");
+                }
+                catch (Exception A){
+                    Toast.makeText(context , A.toString() , Toast.LENGTH_LONG).show();
+                }
+
+
+
             }
         });
     }
