@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 public class Restaurant extends AppCompatActivity {
 
@@ -50,10 +51,11 @@ public class Restaurant extends AppCompatActivity {
 
             viewpager.setAdapter(pagerView_adapter);
 
+            viewpager.setScrollContainer(true);
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 //            bottomNavigationView.getOrCreateBadge(R.id.action_cart).setNumber(MyCart.getSize());
             bottomNavigationView.setElevation(100);
-
+            bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_AUTO);
 
             final ActionBar toolbar = getSupportActionBar();
 //            bottomNavigationView.setOnNavigationItemSelectedListener(bottommOnNavigationItemSelectedListener);
@@ -98,6 +100,7 @@ public class Restaurant extends AppCompatActivity {
 //                    .addToBackStack(null);
 
 
+            viewpager.setOverScrollMode(1);
             viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -106,7 +109,7 @@ public class Restaurant extends AppCompatActivity {
 
                 @Override
                 public void onPageSelected(int position) {
-
+                    viewpager.setCurrentItem(position);
                 }
 
                 @Override

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#006064"
+    android:background="#F04E37"
     android:orientation="vertical"
     tools:context=".Restaurant">
 
@@ -12,8 +12,11 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/cardView" />
+        android:layout_height="707dp"
+        android:layout_above="@id/cardView"
+        android:layout_marginBottom="-54dp"
+        android:isScrollContainer="true"
+        app:layout_scrollFlags="scroll|enterAlways" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -28,6 +31,7 @@
             android:layout_height="wrap_content"
             android:background="@color/cardview_light_background"
             android:elevation="@dimen/_100sdp"
+            android:scrollbars="horizontal"
             app:itemIconTint="@color/bottom_nav_color"
             app:itemTextColor="@color/bottom_nav_color"
             app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"

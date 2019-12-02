@@ -73,7 +73,7 @@ public class fragment_order extends Fragment {
         myDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                final String key =  dataSnapshot.getKey();
+                final String key = dataSnapshot.getKey();
 
                 History_Array.clear();
                 myDatabaseReference.child(Objects.requireNonNull(key)).addValueEventListener(new ValueEventListener() {
@@ -88,7 +88,7 @@ public class fragment_order extends Fragment {
                                 History_CartItems = dataSnapshot.child("cartItems").getValue(genericTypeIndicator);
 
                                 String Address = Objects.requireNonNull(dataSnapshot.child("Address").getValue()).toString();
-                                DataListOfHistory temp = new DataListOfHistory(key , Status, Address, History_CartItems);
+                                DataListOfHistory temp = new DataListOfHistory(key, Status, Address, History_CartItems);
 
                                 History_Array.add(temp);
 
@@ -108,8 +108,8 @@ public class fragment_order extends Fragment {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                final String key =  dataSnapshot.getKey();
-                
+                final String key = dataSnapshot.getKey();
+
                 myDatabaseReference.child(Objects.requireNonNull(key)).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -125,8 +125,7 @@ public class fragment_order extends Fragment {
 
                                 temp.setStatus(Status);
 //                                myAdaptor.notifyDataSetChanged();
-                            }
-                            else {
+                            } else {
                                 removeItem(key);
                                 myAdaptor.notifyDataSetChanged();
                             }
@@ -136,8 +135,8 @@ public class fragment_order extends Fragment {
                     }
 
                     private void removeItem(String key) {
-                        for(int i=0; i<History_Array.size(); i++){
-                            if(History_Array.get(i).getID().equals(key)){
+                        for (int i = 0; i < History_Array.size(); i++) {
+                            if (History_Array.get(i).getID().equals(key)) {
                                 History_Array.remove(i);
                                 break;
                             }
@@ -148,9 +147,9 @@ public class fragment_order extends Fragment {
                     private DataListOfHistory GetItem(String key) {
                         DataListOfHistory temp = null;
 
-                        for(int i=0; i<History_Array.size(); i++){
-                            if(History_Array.get(i).getID().equals(key)){
-                                temp =  History_Array.get(i);
+                        for (int i = 0; i < History_Array.size(); i++) {
+                            if (History_Array.get(i).getID().equals(key)) {
+                                temp = History_Array.get(i);
                                 myAdaptor.notifyItemChanged(i);
                                 break;
                             }

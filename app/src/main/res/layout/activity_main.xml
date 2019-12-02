@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F04E37"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -49,6 +50,8 @@
                     android:id="@+id/edt_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:soundEffectsEnabled="true"
                     android:hint="@string/phone_number" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,7 +65,9 @@
                     android:id="@+id/edt_password_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:hint="@string/password"
+                    android:soundEffectsEnabled="true"
                     android:inputType="textPassword"
                     android:textColor="#006064" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -78,6 +83,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 android:backgroundTint="#D2691E"
+                android:soundEffectsEnabled="true"
                 android:padding="12dp"
                 android:text="@string/log_in"
                 app:cornerRadius="@dimen/_10sdp" />
@@ -89,6 +95,7 @@
                 android:layout_marginBottom="24dp"
                 android:clickable="true"
                 android:focusable="true"
+                android:soundEffectsEnabled="true"
                 android:gravity="center"
                 android:padding="@dimen/_10sdp"
                 android:text="@string/no_account_yet_create_one"

@@ -28,7 +28,7 @@
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_45sdp"
         android:backgroundTint="@color/btn_color"
         android:text="@string/proceed_order"
         android:textAllCaps="true"

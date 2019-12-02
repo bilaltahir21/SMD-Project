@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import java.util.Objects;
+
 public class TemporaryAddress extends DialogFragment {
     EditText town, city, street, house;
 
@@ -46,7 +48,7 @@ public class TemporaryAddress extends DialogFragment {
                     addressSingleton.setmAddress(city.getText().toString() + ", " + town.getText().toString() + ", " + street.getText().toString() + ", " + house.getText().toString());
                     addressSingleton.setStatus("CHANGED");
                     //Leaving
-                    getDialog().dismiss();
+                    Objects.requireNonNull(getDialog()).dismiss();
                 }
             }
         });
