@@ -76,7 +76,7 @@ public class fragment_order extends Fragment {
                 final String key = dataSnapshot.getKey();
 
                 History_Array.clear();
-                myDatabaseReference.child(Objects.requireNonNull(key)).addValueEventListener(new ValueEventListener() {
+                myDatabaseReference.child(Objects.requireNonNull(key)).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         try {
@@ -90,13 +90,31 @@ public class fragment_order extends Fragment {
                                 String Address = Objects.requireNonNull(dataSnapshot.child("Address").getValue()).toString();
                                 DataListOfHistory temp = new DataListOfHistory(key, Status, Address, History_CartItems);
 
-                                History_Array.add(temp);
 
-                                myAdaptor.notifyDataSetChanged();
+                                insert(temp, key);
+//                                History_Array.add(temp);
+//
+//                                myAdaptor.notifyDataSetChanged();
                             }
                         } catch (Exception a) {
                             // Toast.makeText(getContext(), a.toString(), Toast.LENGTH_LONG).show();
                         }
+                    }
+
+                    private void insert(DataListOfHistory temp, String key) {
+                        boolean Present = false;
+                        for(int i=0; i<History_Array.size(); i++){
+                            if(temp.getID().equals(History_Array.get(i).getID())){
+                                Present = true;
+                                break;
+                            }
+                        }
+
+                        if(!Present){
+                            History_Array.add(temp);
+                            myAdaptor.notifyDataSetChanged();
+                        }
+
                     }
 
                     @Override
