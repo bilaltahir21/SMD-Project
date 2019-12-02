@@ -58,15 +58,17 @@ public class fragment_cart extends Fragment {
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddressSingleton addr=AddressSingleton.get_Instance();
+                AddressSingleton addr = AddressSingleton.get_Instance();
                 if (!addr.getmCity().equals("City") && !addr.getmTown().equals("Town") && !addr.getmStreet().equals("Street") && !addr.getmHouse().equals("House")) {
                     if (MyCart.getSize() != 0) {
                         AddressConfirmation addressConfirmation = new AddressConfirmation();
                         addressConfirmation.show(Objects.requireNonNull(getFragmentManager()), "Address Confirmation");
                         AddressSingleton addressSingleton;
                         addressSingleton = AddressSingleton.get_Instance();
-                        if ((addressSingleton.getStatus() == "NOT CHANGED" || addressSingleton.getStatus() == "CHANGED") && addressSingleton.getStatus()!=null) {
-                            placeOrderFireBase();
+                        while (addressSingleton.getStatus() != null) {
+                            if (addressSingleton.getStatus() == "NOT CHANGED" || addressSingleton.getStatus() == "CHANGED") {
+                                placeOrderFireBase();
+                            }
                         }
                     } else {
                         Toast toast = Toast.makeText(getActivity(), "Your Cart is Empty!", Toast.LENGTH_LONG);
@@ -100,8 +102,6 @@ public class fragment_cart extends Fragment {
             myDatabaseReference.child("Address").setValue(address);
 
 
-
-
             //////// JUST FOR NOW BUT THIS CODE WILL BE REMOVE AFTER SETTING DATABASE (REMOVING ORDERS FROM USERS ///////
 
             myDatabaseReference = FirebaseDatabase.getInstance().getReference("Order").push();
@@ -112,7 +112,6 @@ public class fragment_cart extends Fragment {
 
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
             MyCart.EmptyCart();
@@ -153,6 +152,9 @@ public class fragment_cart extends Fragment {
         adapter = new AdapterForCart(Array_Cart, context);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
+        AddressSingleton addressSingleton;
+        addressSingleton = AddressSingleton.get_Instance();
+        addressSingleton.setStatus(null);
     }
 
 }

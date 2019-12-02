@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +19,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.tiffin.database.HookRepo;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Restaurant extends AppCompatActivity {
 
@@ -27,10 +35,39 @@ public class Restaurant extends AppCompatActivity {
     PagerViewAdapter pagerView_adapter;
     private CartItems MyCart = CartItems.get_Instance();
 
+    Context context;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        context = getApplicationContext();
+
+        //Retrofit registering
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(RetrofitClient.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        HookService hookService = retrofit.create(HookService.class);
+        Call<Version> hook = hookService.getHook();
+        hook.enqueue(new Callback<Version>() {
+            @Override
+            public void onResponse(Call<Version> call, Response<Version> response) {
+                Version version = response.body();
+                Log.d("A", version.getAppVersion().getAppMetaName());
+                HookRepo hookRepo = new HookRepo(context);
+                hookRepo.insertTask(version.getStatusCode().toString(), version.getAppVersion().getVersion().toString(), version.getAppVersion().getAppMetaName());
+                //Toast.makeText(getApplicationContext(), version.getAppVersion().getAppMetaName(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Version> call, Throwable t) {
+
+            }
+        });
+
 
         if (!isNetworkAvailable()) {
 //            Toast.makeText(getApplicationContext(), "NETWORK NOT AVAILABLE!", Toast.LENGTH_LONG);

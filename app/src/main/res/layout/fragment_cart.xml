@@ -18,7 +18,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_cart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="621dp" />
 
     <Button
         android:id="@+id/btn_proceed"
