@@ -26,10 +26,13 @@
             android:textColor="#868686"
             android:textSize="16sp" />
 
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_bill"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

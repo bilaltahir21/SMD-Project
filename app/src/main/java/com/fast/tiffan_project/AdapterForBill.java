@@ -3,6 +3,7 @@ package com.fast.tiffan_project;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.view.ActionProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,8 @@ public class AdapterForBill extends RecyclerView.Adapter<AdapterForBill.MyViewHo
         final DataListForCart Value = Array.get(position);
 
         holder.Name.setText(Value.getItemName());
-        holder.Quantity.setText(Value.getQuantity());
+        String Qty = Integer.toString(Value.getQuantity());
+        holder.Quantity.setText(Qty);
         holder.Bill.setText(Value.getBill());
 
     }
@@ -53,8 +55,8 @@ public class AdapterForBill extends RecyclerView.Adapter<AdapterForBill.MyViewHo
             super(itemView);
 
             Name = itemView.findViewById(R.id.txt_DishName);
-            Quantity = itemView.findViewById(R.id.txt_Qty);
-            Bill = itemView.findViewById(R.id.txt_bill);
+            Quantity = itemView.findViewById(R.id.txt_BillQty);
+            Bill = itemView.findViewById(R.id.txt_Box_bill);
         }
     }
 }

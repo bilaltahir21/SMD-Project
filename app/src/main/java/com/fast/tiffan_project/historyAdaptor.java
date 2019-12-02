@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -55,14 +56,37 @@ public class historyAdaptor extends RecyclerView.Adapter<historyAdaptor.MyViewHo
             public void onClick(View view) {
 
                 ArrayList<DataListForCart> temp = value.getHistory_CartItems();
-                DisplayDetails dialog = new DisplayDetails(temp);
+//                DisplayDetails dialog = new DisplayDetails(temp);
+                final Dialog dialog = new Dialog(context);
 
-                try {
-//                    dialog.show(Manager , "Dialog Box");
-                }
-                catch (Exception A){
-                    Toast.makeText(context , A.toString() , Toast.LENGTH_LONG).show();
-                }
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.setCancelable(false);
+                dialog.setContentView(R.layout.bill_details);
+//
+                RecyclerView recyclerView = dialog.findViewById(R.id.recyclerView_bill);
+                AdapterForBill myAdapter = new AdapterForBill(temp, context);
+
+                recyclerView.setAdapter(myAdapter);
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+
+                dialog.show();
+
+
+                Button dismiss = dialog.findViewById(R.id.btn_dismiss);
+                dismiss.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.hide();
+                    }
+                });
+//                try {
+////                    dialog.show(Manager , "Dialog Box");
+//                }
+//                catch (Exception A){
+//                    Toast.makeText(context , A.toString() , Toast.LENGTH_LONG).show();
+//                }
 
 
 
