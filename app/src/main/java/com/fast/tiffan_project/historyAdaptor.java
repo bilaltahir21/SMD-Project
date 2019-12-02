@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,6 +75,15 @@ public class historyAdaptor extends RecyclerView.Adapter<historyAdaptor.MyViewHo
                 dialog.show();
 
 
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(dialog.getWindow().getAttributes());
+//                layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+//                layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+//
+//
+//                dialog.getWindow().setAttributes(layoutParams);
+
+
                 Button dismiss = dialog.findViewById(R.id.btn_dismiss);
                 dismiss.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -94,17 +104,9 @@ public class historyAdaptor extends RecyclerView.Adapter<historyAdaptor.MyViewHo
         });
     }
 
-    String convert(int d) {
-        return ("Progress : " + d + "%");
-    }
-
     @Override
     public int getItemCount() {
         return Array.size();
-    }
-
-    private void callnext(int p) {
-        //Toast.makeText(this.context, "Not Implemented yet ", Toast.LENGTH_SHORT).show();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

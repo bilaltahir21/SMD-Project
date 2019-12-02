@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="380dp"
@@ -27,11 +27,52 @@
             android:textSize="16sp" />
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:padding="@dimen/_12sdp"
+                android:text="Name"
+                android:textSize="14sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#f0f0f4"
+                android:hint="@string/mr_tiffin"
+                android:padding="@dimen/_12sdp"
+                android:text="Quantity"
+                android:textColor="#ACACAC"
+                android:textSize="14sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#f0f0f4"
+                android:hint="@string/mr_tiffin"
+                android:padding="@dimen/_12sdp"
+                android:text="Amount"
+                android:textColor="#ACACAC"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_bill"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
