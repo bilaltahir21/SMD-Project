@@ -74,7 +74,7 @@ public class fragment_cart extends Fragment {
                                                       }
                                                   }
                         );
-                        Button button1=dialog.findViewById(R.id.change);
+                        Button button1 = dialog.findViewById(R.id.change);
                         button1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

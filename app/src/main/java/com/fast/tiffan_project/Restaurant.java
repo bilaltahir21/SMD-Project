@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -89,10 +90,11 @@ public class Restaurant extends AppCompatActivity {
             viewpager.setAdapter(pagerView_adapter);
 
             viewpager.setScrollContainer(true);
-            BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+            final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 //            bottomNavigationView.getOrCreateBadge(R.id.action_cart).setNumber(MyCart.getSize());
             bottomNavigationView.setElevation(100);
             bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_AUTO);
+
 
             final ActionBar toolbar = getSupportActionBar();
 //            bottomNavigationView.setOnNavigationItemSelectedListener(bottommOnNavigationItemSelectedListener);
